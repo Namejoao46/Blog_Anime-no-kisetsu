@@ -1,0 +1,53 @@
+/* Remove estilos padrões de <h1> e <a> */
+h1, a{
+    all: unset;
+}
+
+.card-big {
+    width: 825px;
+    height: 500px;
+    position: relative;
+    overflow: hidden;
+}
+
+.card-big img {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+.card-description {
+    position: absolute;
+    bottom: 80px;
+    font-weight: bold;
+    left: 20px;
+    display: flex;
+    gap: 15px;
+    background: none;
+}
+
+.name, .data {
+    margin: 0;
+    font-size: 22px;
+}
+
+.name{
+    color: white;
+    padding: 5px;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.data{
+    background-color: rgba(0, 0, 0, 0);
+    padding: 5px;
+    color: #00ffff;
+}
+
+.bigTitle {
+    position: absolute;
+    font-weight: bold;
+    top: 419px;
+    left: 20px;
+    font-size: 24px;
+    color: white;
+}

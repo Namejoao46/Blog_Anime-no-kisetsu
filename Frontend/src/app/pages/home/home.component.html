@@ -1,0 +1,419 @@
+
+<header>
+    <div>
+        <app-menu-bar
+        photoLogo="https://i.postimg.cc/vmhTVRcR/Chat-GPT-Image-4-jun-2025-10-01-42.png"
+        nomeSite="Anime no Kisetsu"
+        ></app-menu-bar>
+    </div>
+
+    <div class="menu-bar-itens">
+        <app-menu-bar
+            buttom="HOME"
+        ></app-menu-bar>
+        <app-menu-bar
+            buttom="COMUNIDADE"
+        ></app-menu-bar>
+        <app-menu-bar
+            buttom="CONTATO"
+        ></app-menu-bar>
+    </div>
+
+    <div class="menu-bar">
+        <app-menu-bar
+            link ="https://bing.com/search?q=GitHub+profile+namejoao46"
+            img ="https://img.icons8.com/?size=100&id=12599&format=png&color=FFFFFF"
+            nomeLogo ="GitHub"
+        ></app-menu-bar>
+        <app-menu-bar
+            link="www.linkedin.com/in/joaopauloavs"
+            img="https://img.icons8.com/?size=100&id=8808&format=png&color=FFFFFF"
+            nomeLogo="Linkedin"
+        ></app-menu-bar>
+        <app-menu-bar
+            link="mailto:paulo.joao.avs@gmail.com"
+            img="https://img.icons8.com/?size=100&id=38158&format=png&color=FFFFFF"
+            nomeLogo="Gmail"
+        ></app-menu-bar>
+    </div>
+    <app-menu-bar></app-menu-bar>
+</header>
+
+<app-menu-title 
+photoCover="https://wallpapercave.com/wp/wp6183530.png" 
+cardName="SOLO LEVELING" 
+cardData="JUN,02/2025"
+cardTitle="SOLO LEVELING VENCEDOR DO ANIME AWARDS 2025"
+cardDescription="Solo Leveling foi o grande vencedor, superando Frieren e a Jornada para o Além, Diários de uma Apotecária e Dandadan. Conquistou o público com sua animação de alta qualidade e história envolvente"
+>
+</app-menu-title>
+
+<div class="titulo-news">
+    <h1>ULTIMAS NOTICIAS</h1>
+</div>
+    <div class="botoes-categorias">
+        <button (click)="filtrarNoticias('')" class="categoria-todos">TODOS</button>
+        <button (click)="filtrarNoticias('1')" class="categoria-anime">ANIME</button>
+        <button (click)="filtrarNoticias('2')" class="categoria-manga">MANGA</button>
+        <button (click)="filtrarNoticias('3')" class="categoria-gamer">GAMER</button>
+    </div>
+<div class="news-container">
+
+    <button (click)="scrollLeft()" class="buttom-ante">←</button>
+    <div #newsRolante class="news__rolante">
+        <app-noticias
+            photoCover="https://th.bing.com/th/id/OIP.nyTELxvGrYkIM-1mfbGvqQHaDe?rs=1&pid=ImgDetMain"
+            cardName="BLUE LOCK"
+            cardData="JUN,02/2025"
+            cardCategory="1"
+            cardDescription="Filme do Ano – Look Back levou o prêmio, competindo com Haikyuu!! The Dumpster Battle e SPY x FAMILY CODE: White"
+        ></app-noticias>
+        <app-noticias
+            photoCover="https://th.bing.com/th/id/OIP.MI_OUzl8Oan0YCz4VxAqxQHaEK?w=290&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3"
+            cardName="HUNTER X HUNTER"
+            cardData="JUN,08/2025"
+            cardCategory="3"
+            cardDescription="A demo do jogo foi lançada recentemente, permitindo que os fãs experimentem o combate baseado no sistema Nen."
+        ></app-noticias>
+        <app-noticias
+            photoCover="https://th.bing.com/th/id/OIP.aBkqsQ4dUmJzqlHD77WMmQHaEo?w=287&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3"
+            cardName="KAIJU NO. 8"
+            cardData="JUN,08/2025"
+            cardCategory="2"
+            cardDescription="O mangá está se aproximando do seu desfecho, com apenas dois capítulos restantes antes da conclusão."
+        ></app-noticias>
+        <app-noticias
+            photoCover="https://th.bing.com/th/id/OIP.rA8t2teCkskvFeHkTZVlRgHaEK?w=321&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3"
+            cardName="STREET FIGHTER"
+            cardData="JUN,09/2025"
+            cardCategory="2"
+            cardDescription="A Capcom anunciou um novo mangá para comemorar o aniversário de Street Fighter 6, focado no personagem Luke Sullivan"
+        ></app-noticias>
+        <app-noticias
+            photoCover="https://th.bing.com/th/id/OIP.DDlEERi6dG7HqWjBoLmCcwAAAA?rs=1&pid=ImgDetMain"
+            cardName="ONE PIECE"
+            cardData="JUN,07/2025"
+            cardCategory="2"
+            cardDescription="O capítulo mais recente revelou detalhes sobre a força de Imu e trouxe grandes reviravoltas na história."
+        ></app-noticias>
+        <app-noticias
+            photoCover="https://i.pinimg.com/originals/be/35/b1/be35b12efdcb47e2c18d98f9e4cb5595.jpg"
+            cardName="DANDADAN"
+            cardData="JUN,02/2025"
+            cardCategory="1"
+            cardDescription="Melhor Música de Anime – Otonoke, de Creepy Nuts (Dandadan) Uma trilha sonora marcante que complementa perfeitamente a atmosfera do anime."
+        ></app-noticias>
+        <app-noticias
+            photoCover="https://th.bing.com/th/id/OIP.m6ld39B05pazc26vk4xFzgHaEK?rs=1&pid=ImgDetMain"
+            cardName="KIMETSU NO YAIBA"
+            cardData="02 JUN 2025"
+            cardCategory="1"
+            cardDescription="Melhor Animação – Demon Slayer: Kimetsu no Yaiba – Hashira Training Arc Reconhecido pela qualidade visual impecável e fluidez das cenas de ação."
+        ></app-noticias>
+        <app-noticias
+            photoCover="https://staticg.sportskeeda.com/editor/2024/01/b0f61-17050803861897-1920.jpg"
+            cardName="FRIEREN"
+            cardData="JUN,02/2025"
+            cardCategory="1"
+            cardDescription="Melhor Personagem Principal – Frieren (Frieren e a Jornada para o Além) Uma protagonista cativante que conduz uma jornada emocionante e reflexiva."
+        ></app-noticias>
+        <app-noticias
+            photoCover="https://th.bing.com/th/id/OIP.qRuOoM_NvDbAPmJN98XknwHaDt?w=326&h=174&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3"
+            cardName="Jogos baseados em animes"
+            cardData="JUN,08/2025"
+            cardCategory="3"
+            cardDescription="Uma lista recente destacou os melhores jogos de luta inspirados em animes, incluindo Dragon Ball FighterZ, Naruto Ninja Storm e Jump Force"
+        ></app-noticias>
+    </div>
+    <button (click)="scrollRight()" class="buttom-prox">→</button>
+</div>
+
+<div class="card-big">
+    <button (click)="scrollLeftBigCard()" class="buttom-ante-big">←</button>
+    <div #bigCard class="big-news">
+
+        <app-big-card
+            photoCover ="https://static.animecorner.me/2023/09/1694329986-30086.jpg"
+            bigTitle="Anunciado para PC e Xbox Series X|S, com modo cooperativo"
+            cardName="SOLO LEVELING"
+            cardData="JUN,7/2025"
+        ></app-big-card>
+        <app-big-card
+            photoCover ="https://th.bing.com/th/id/R.7c67f65b8f6404593ce223abcd34d7c8?rik=f3vGNk11hyzHIQ&riu=http%3a%2f%2fpm1.narvii.com%2f7829%2fcbb6914af29d8c9a4f4c72a0f4aa74b344363b9br1-1280-720v2_uhq.jpg&ehk=R5SCqE73GvNvCNOe1GvBInrfoMbblucpzstksFtho9Q%3d&risl=&pid=ImgRaw&r=0"
+            bigTitle="O trailer da adaptação para live-action foi lançado recentemente, e os visuais impressionaram os fãs"
+            cardName="Omniscient Reader’s Viewpoint"
+            cardData="JUN,7/2025"
+        ></app-big-card>
+        <app-big-card
+            photoCover ="https://th.bing.com/th/id/OIP.3vAVFkC9DmuAWL2m-4MTjQHaEK?w=323&h=182&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3"
+            bigTitle="Um crossover que reúne personagens de Dragon Ball, Naruto, One Piece, etc"
+            cardName="JUMP FORCE"
+            cardData="JUN,7/2025"
+        ></app-big-card>
+        
+    </div>
+    <button (click)="scrollRightBigCard()" class="buttom-prox-big">→</button>
+
+
+    <div class="big-news-vertical">
+        <div class="news-one-vertical">
+            <button (click)="scrollUp('newsFourt')" class="buttom-up">▲</button>
+            <div class="title-one">
+                <h1 class="background">MANHWA</h1>
+            </div>
+            <div #newsFourt class="news-scroll">
+                <app-noticias-vertical
+                    photoNews="https://th.bing.com/th/id/OIP.iNZpi1RZKWKeGDjLV2OaBAHaEK?rs=1&pid=ImgDetMain"
+                    titleNews ="Fãs fazem abaixo assinado para cancelar o anime, por má adaptação"
+                    cardName="The Beginning After the End"
+                    cardData="JUN,2/2025"
+                ></app-noticias-vertical>
+                <app-noticias-vertical
+                    photoNews ="https://staticg.sportskeeda.com/editor/2023/03/e0622-16796638059063-1920.jpg"
+                    titleNews ="Segunda temporada teve menos sucesso que a primeira"
+                    cardName="Tower of God"
+                    cardData="JUN,2/2025"
+                ></app-noticias-vertical>
+                <app-noticias-vertical
+                    photoNews ="https://th.bing.com/th/id/OIP.ogay2X9loNYtslY0HrBiCgHaD5?rs=1&pid=ImgDetMain"
+                    titleNews ="altamente recomendado para fãs de histórias sombrias e intensas."
+                    cardName="Bastard"
+                    cardData="JUN,2/2025"
+                ></app-noticias-vertical>
+                <app-noticias-vertical
+                    photoNews ="https://th.bing.com/th/id/OIP.jZwRRGN0pMIf-BbzgK5mrAHaEK?pid=ImgDet&w=184&h=103&c=7&dpr=1,3"
+                    titleNews ="O retorno do cão de casa continua sendo um dos títulos mais populares no gênero"
+                    cardName="O Retorno do Cão de Caça dos Baskerville"
+                    cardData="JUN,2/2025"
+                ></app-noticias-vertical>
+                <app-noticias-vertical
+                    photoNews="https://th.bing.com/th/id/OIP.y3SPgtYHJSF1-YzrGdZAVQHaEK?rs=1&pid=ImgDetMain"
+                    titleNews="O capítulo 100 será lançado em 8 de março de 2025"
+                    cardName="Solo Farming in the Tower"
+                    cardData="MAI,6/2025"
+                ></app-noticias-vertical>
+                <app-noticias-vertical
+                    photoNews="https://th.bing.com/th/id/OIP.BRO8CcCgNn-TM32XUtIMvQHaEK?rs=1&pid=ImgDetMain"
+                    titleNews="O capitulo 162 veio cheio de possibilidades"
+                    cardName="O Filho Mais Novo dos Runcandel"
+                    cardData="JUN,2/2025"
+                ></app-noticias-vertical>
+                <app-noticias-vertical
+                    photoNews="https://th.bing.com/th/id/OIP.iotGs9VXsjZwm5e1sKLSkAHaEJ?rs=1&pid=ImgDetMain"
+                    titleNews="Considerado um dos melhores manhwas comtenporãneos"
+                    cardName="INFINITE MAGE"
+                    cardData="JUN,2/2025"
+                ></app-noticias-vertical>
+            </div>
+            <button (click)="scrollDown('newsFourt')" class="buttom-down">▼</button>
+        </div>
+    </div>
+</div>
+
+<div class="news-vertical">
+    <div class="news-one">
+        
+        <div class="title-one">
+            <h1 class="background">FRIEREN</h1>
+        </div>
+        <button (click)="scrollUp('newsOne')" class="buttom-up">▲</button>
+        <div #newsOne class="news-scroll">
+            <app-noticias-vertical
+                photoNews="https://staticg.sportskeeda.com/editor/2024/01/b0f61-17050803861897-1920.jpg"
+                titleNews ="Melhor Personagem Principal – Frieren"
+                cardName="FRIEREN"
+                cardData="JUN,2/2025"
+            ></app-noticias-vertical>
+            <app-noticias-vertical
+                photoNews ="https://staticg.sportskeeda.com/editor/2024/01/b0f61-17050803861897-1920.jpg"
+                titleNews ="Melhor Personagem Principal – Frieren"
+                cardName="FRIEREN"
+                cardData="JUN,2/2025"
+            ></app-noticias-vertical>
+            <app-noticias-vertical
+                photoNews ="https://staticg.sportskeeda.com/editor/2024/01/b0f61-17050803861897-1920.jpg"
+                titleNews ="Melhor Personagem Principal – Frieren"
+                cardName="FRIEREN"
+                cardData="JUN,2/2025"
+            ></app-noticias-vertical>
+            <app-noticias-vertical
+                photoNews ="https://staticg.sportskeeda.com/editor/2024/01/b0f61-17050803861897-1920.jpg"
+                titleNews ="Melhor Personagem Principal – Frieren"
+                cardName="FRIEREN"
+                cardData="JUN,2/2025"
+            ></app-noticias-vertical>
+            <app-noticias-vertical
+                photoNews="https://th.bing.com/th/id/OIP.m6ld39B05pazc26vk4xFzgHaEK?rs=1&pid=ImgDetMain"
+                titleNews="Melhor Animação – Demon Slayer: Kimetsu no Yaiba – Hashira Training Arc"
+                cardName="KIMETSU NO YAIBA"
+                cardData="JUN,2/2025"
+            ></app-noticias-vertical>
+            <app-noticias-vertical
+                photoNews="https://th.bing.com/th/id/OIP.m6ld39B05pazc26vk4xFzgHaEK?rs=1&pid=ImgDetMain"
+                titleNews="Melhor Animação – Demon Slayer: Kimetsu no Yaiba – Hashira Training Arc"
+                cardName="KIMETSU NO YAIBA"
+                cardData="JUN,2/2025"
+            ></app-noticias-vertical>
+            <app-noticias-vertical
+                photoNews="https://th.bing.com/th/id/OIP.m6ld39B05pazc26vk4xFzgHaEK?rs=1&pid=ImgDetMain"
+                titleNews="Melhor Animação – Demon Slayer: Kimetsu no Yaiba – Hashira Training Arc"
+                cardName="KIMETSU NO YAIBA"
+                cardData="JUN,2/2025"
+            ></app-noticias-vertical>
+            <app-noticias-vertical
+                photoNews="https://th.bing.com/th/id/OIP.m6ld39B05pazc26vk4xFzgHaEK?rs=1&pid=ImgDetMain"
+                titleNews="Melhor Animação – Demon Slayer: Kimetsu no Yaiba – Hashira Training Arc"
+                cardName="KIMETSU NO YAIBA"
+                cardData="JUN,2/2025"
+            ></app-noticias-vertical>
+        </div>
+        <button (click)="scrollDown('newsOne')" class="buttom-down">▼</button>
+    </div>
+
+    <div class="news-two">
+        <button (click)="scrollUp('newsTwo')" class="buttom-up">▲</button>
+        <div class="title-two">
+            <h1 class="background">KIMETSU NO YAIBA</h1>
+        </div>
+        <div #newsTwo class="news-scroll">
+            <app-noticias-vertical
+                photoNews="https://th.bing.com/th/id/OIP.m6ld39B05pazc26vk4xFzgHaEK?rs=1&pid=ImgDetMain"
+                titleNews="Melhor Animação – Demon Slayer: Kimetsu no Yaiba – Hashira Training Arc"
+                cardName="KIMETSU NO YAIBA"
+                cardData="JUN,2/2025"
+            ></app-noticias-vertical>
+            <app-noticias-vertical
+                photoNews="https://th.bing.com/th/id/OIP.m6ld39B05pazc26vk4xFzgHaEK?rs=1&pid=ImgDetMain"
+                titleNews="Melhor Animação – Demon Slayer: Kimetsu no Yaiba – Hashira Training Arc"
+                cardName="KIMETSU NO YAIBA"
+                cardData="JUN,2/2025"
+            ></app-noticias-vertical>
+            <app-noticias-vertical
+                photoNews="https://th.bing.com/th/id/OIP.m6ld39B05pazc26vk4xFzgHaEK?rs=1&pid=ImgDetMain"
+                titleNews="Melhor Animação – Demon Slayer: Kimetsu no Yaiba – Hashira Training Arc"
+                cardName="KIMETSU NO YAIBA"
+                cardData="JUN,2/2025"
+            ></app-noticias-vertical>
+            <app-noticias-vertical
+                photoNews="https://th.bing.com/th/id/OIP.m6ld39B05pazc26vk4xFzgHaEK?rs=1&pid=ImgDetMain"
+                titleNews="Melhor Animação – Demon Slayer: Kimetsu no Yaiba – Hashira Training Arc"
+                cardName="KIMETSU NO YAIBA"
+                cardData="JUN,2/2025"
+            ></app-noticias-vertical>
+            <app-noticias-vertical
+                photoNews="https://i.pinimg.com/originals/be/35/b1/be35b12efdcb47e2c18d98f9e4cb5595.jpg"
+                titleNews="Melhor Música de Anime – Otonoke, de Creepy Nuts (Dandadan)"
+                cardName="DANDADAN"
+                cardData="JUN,2/2025"
+            ></app-noticias-vertical>
+            <app-noticias-vertical
+                photoNews="https://i.pinimg.com/originals/be/35/b1/be35b12efdcb47e2c18d98f9e4cb5595.jpg"
+                titleNews="Melhor Música de Anime – Otonoke, de Creepy Nuts (Dandadan)"
+                cardName="DANDADAN"
+                cardData="JUN,2/2025"
+            ></app-noticias-vertical>
+            <app-noticias-vertical
+                photoNews="https://i.pinimg.com/originals/be/35/b1/be35b12efdcb47e2c18d98f9e4cb5595.jpg"
+                titleNews="Melhor Música de Anime – Otonoke, de Creepy Nuts (Dandadan)"
+                cardName="DANDADAN"
+                cardData="JUN,2/2025"
+            ></app-noticias-vertical>
+            <app-noticias-vertical
+                photoNews="https://i.pinimg.com/originals/be/35/b1/be35b12efdcb47e2c18d98f9e4cb5595.jpg"
+                titleNews="Melhor Música de Anime – Otonoke, de Creepy Nuts (Dandadan)"
+                cardName="DANDADAN"
+                cardData="JUN,2/2025"
+            ></app-noticias-vertical>
+        </div>
+        <button (click)="scrollDown('newsTwo')" class="buttom-down">▼</button>
+    </div>
+    <div class="news-tree">
+        <button (click)="scrollUp('newsTree')" class="buttom-up">▲</button>
+        <div class="title-tree">
+            <h1 class="background">DANDADAN</h1>
+        </div>
+        <div #newsTree class="news-scroll">
+            <app-noticias-vertical
+                photoNews="https://i.pinimg.com/originals/be/35/b1/be35b12efdcb47e2c18d98f9e4cb5595.jpg"
+                titleNews="Melhor Música de Anime – Otonoke, de Creepy Nuts (Dandadan)"
+                cardName="DANDADAN"
+                cardData="JUN,2/2025"
+            ></app-noticias-vertical>
+            <app-noticias-vertical
+                photoNews="https://i.pinimg.com/originals/be/35/b1/be35b12efdcb47e2c18d98f9e4cb5595.jpg"
+                titleNews="Melhor Música de Anime – Otonoke, de Creepy Nuts (Dandadan)"
+                cardName="DANDADAN"
+                cardData="JUN,2/2025"
+            ></app-noticias-vertical>
+            <app-noticias-vertical
+                photoNews="https://i.pinimg.com/originals/be/35/b1/be35b12efdcb47e2c18d98f9e4cb5595.jpg"
+                titleNews="Melhor Música de Anime – Otonoke, de Creepy Nuts (Dandadan)"
+                cardName="DANDADAN"
+                cardData="JUN,2/2025"
+            ></app-noticias-vertical>
+            <app-noticias-vertical
+                photoNews="https://i.pinimg.com/originals/be/35/b1/be35b12efdcb47e2c18d98f9e4cb5595.jpg"
+                titleNews="Melhor Música de Anime – Otonoke, de Creepy Nuts (Dandadan)"
+                cardName="DANDADAN"
+                cardData="JUN,2/2025"
+            ></app-noticias-vertical>
+            <app-noticias-vertical
+                photoNews="https://th.bing.com/th/id/OIP.m6ld39B05pazc26vk4xFzgHaEK?rs=1&pid=ImgDetMain"
+                titleNews="Melhor Animação – Demon Slayer: Kimetsu no Yaiba – Hashira Training Arc"
+                cardName="KIMETSU NO YAIBA"
+                cardData="JUN,2/2025"
+            ></app-noticias-vertical>
+            <app-noticias-vertical
+                photoNews="https://th.bing.com/th/id/OIP.m6ld39B05pazc26vk4xFzgHaEK?rs=1&pid=ImgDetMain"
+                titleNews="Melhor Animação – Demon Slayer: Kimetsu no Yaiba – Hashira Training Arc"
+                cardName="KIMETSU NO YAIBA"
+                cardData="JUN,2/2025"
+            ></app-noticias-vertical>
+            <app-noticias-vertical
+                photoNews="https://th.bing.com/th/id/OIP.m6ld39B05pazc26vk4xFzgHaEK?rs=1&pid=ImgDetMain"
+                titleNews="Melhor Animação – Demon Slayer: Kimetsu no Yaiba – Hashira Training Arc"
+                cardName="KIMETSU NO YAIBA"
+                cardData="JUN,2/2025"
+            ></app-noticias-vertical>
+            <app-noticias-vertical
+                photoNews="https://th.bing.com/th/id/OIP.m6ld39B05pazc26vk4xFzgHaEK?rs=1&pid=ImgDetMain"
+                titleNews="Melhor Animação – Demon Slayer: Kimetsu no Yaiba – Hashira Training Arc"
+                cardName="KIMETSU NO YAIBA"
+                cardData="JUN,2/2025"
+            ></app-noticias-vertical>
+        </div>
+        <button (click)="scrollDown('newsTree')" class="buttom-down">▼</button>
+    </div>
+</div>
+<footer class="footer">
+    <div class="footer-content">
+
+        <p>  Muito bem-vindo ao Anime No Kisetsu! Fique por dentro de todas as novidades e atualizações sobre anime, mangá, games, light novels e muito mais, pois este é o lugar certo para alimentar sua paixão pelo universo otaku. O site foi pensado para trazer até você insights valiosos sobre os lançamentos de Animes Online. Então, venha se juntar a nós nessa jornada emocionante pelo mundo da animação japonesa! Em conclusão, aqui no site Anime No Kisetsu, é onde as histórias se encontram com as notícias, elevando sua experiência otaku para o próximo nível.
+        </p>
+
+        <hr>
+
+        <nav class="footer-links">
+            <app-menu-bar
+                link ="https://bing.com/search?q=GitHub+profile+namejoao46"
+                img ="https://img.icons8.com/?size=100&id=12599&format=png&color=FFFFFF"
+                nomeLogo ="GitHub"
+            ></app-menu-bar> |
+            <app-menu-bar
+                link="www.linkedin.com/in/joaopauloavs"
+                img="https://img.icons8.com/?size=100&id=8808&format=png&color=FFFFFF"
+                nomeLogo="Linkedin"
+            ></app-menu-bar> |
+            <app-menu-bar
+                link="mailto:paulo.joao.avs@gmail.com"
+                img="https://img.icons8.com/?size=100&id=38158&format=png&color=FFFFFF"
+                nomeLogo="Gmail"
+            ></app-menu-bar>
+        </nav>
+
+        <hr>
+
+        <p>&copy; 2025 João Paulo | Todas as imagens e noticias pertecem aos respectivos proprietarios</p>
+        
+    </div>
+</footer>

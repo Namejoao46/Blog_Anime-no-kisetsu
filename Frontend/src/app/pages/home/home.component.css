@@ -1,0 +1,337 @@
+
+
+
+
+
+/* ==== ESTILIZAÇÃO DA BARRA DE MENU ==== */
+.menu-bar {
+    display: flex; /* Alinha os itens horizontalmente */
+    gap: 0px; /* Remove espaçamento entre elementos */
+    align-items: center; /* Centraliza os itens verticalmente */
+    justify-content: end; /* Alinha os itens à direita */
+    margin-bottom: 15px; /* Adiciona espaço abaixo da barra */
+}
+
+/* ==== Estilização do título "NEWS ANIME AWARDS" ==== */
+.titulo-news {
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 36px;
+    margin-top: 30px;
+    margin-bottom: -60px;
+    color: white; /* Adiciona espaçamento abaixo */
+}
+
+/* ==== ESTILIZAÇÃO DOS ITENS DO MENU ==== */
+.menu-bar-itens {
+    display: flex; /* Alinha os itens horizontalmente */
+    justify-content: center; /* Centraliza os itens */
+    gap: 15px; /* Adiciona espaçamento entre os itens */
+}
+
+/* ==== ESTILIZAÇÃO DOS BOTÕES DE CATEGORIAS ==== */
+.botoes-categorias {
+    display: flex; /* Alinha os botões horizontalmente */
+    justify-content: end; /* Centraliza os botões */
+    gap: 15px; /* Adiciona espaçamento entre os botões */
+    margin: 25px 50px; /* Adiciona espaço acima e abaixo dos botões */
+}
+
+/* ==== ESTILIZAÇÃO DOS BOTÕES INDIVIDUAIS ==== */
+.botoes-categorias button {
+    background-color: #333; /* Cor de fundo escura */
+    color: #00ffff; /* Cor do texto azul claro */
+    font-size: 16px; /* Define tamanho da fonte */
+    font-weight: bold; /* Deixa o texto em negrito */
+    border: none; /* Remove a borda */
+    padding: 8px 15px; /* Define o espaçamento interno */
+    border-radius: 5px; /* Arredonda os cantos */
+    cursor: pointer; /* Muda o cursor para indicar ação */
+    transition: background 0.3s ease, transform 0.2s ease; /* Adiciona animação de hover */
+}
+
+/* ==== EFEITO HOVER NOS BOTÕES ==== */
+.botoes-categorias button:hover {
+    background-color: #f90; /* Altera a cor de fundo ao passar o mouse */
+    color: black; /* Altera a cor do texto */
+    transform: scale(1.05); /* Aumenta ligeiramente o tamanho do botão */
+}
+
+/* ==== ESTILIZAÇÃO DAS CATEGORIAS ==== */
+.categorias-todos {
+    background-color: #ff4d94; /* Fundo cinza escuro */
+}
+
+.categorias-animes {
+    background-color: #ccff00; /* Fundo azul claro */
+}
+
+.categorias-manga {
+    background-color: #ff9900; /* Fundo laranja avermelhado */
+}
+
+.categorias-gamer {
+    background-color: #00ccff; /* Fundo verde escuro */
+}
+
+/* ==== ESTILO DOS BOTÕES AO CLICAR ==== */
+.botoes-categorias button:active {
+    transform: scale(0.95); /* Reduz ligeiramente o botão ao ser pressionado */
+    opacity: 0.8; /* Reduz a opacidade para um efeito de clique */
+}
+
+/* ==== ESTILIZAÇÃO DO CONTAINER DE NOTÍCIAS ==== */
+.news-container {
+    position: relative; /* Define a posição como relativa */
+    display: flex; /* Alinha os itens verticalmente */
+    flex-direction: column; /* Organiza os itens em coluna */
+    align-items: center; /* Centraliza os itens */
+}
+
+/* ==== ESTILIZAÇÃO DO SCROLLER DE NOTÍCIAS ==== */
+.news__rolante {
+    display: flex; /* Alinha as notícias horizontalmente */
+    overflow-x: hidden; /* Oculta o conteúdo extra horizontalmente */
+    scroll-behavior: smooth; /* Adiciona um efeito suave ao scroll */
+    width: 95%; /* Define a largura como 95% */
+}
+
+/* ==== ESTILIZAÇÃO DOS BOTÕES DE NAVEGAÇÃO ==== */
+.buttom-ante, .buttom-prox {
+    position: absolute; /* Define a posição absoluta */
+    top: 30%; /* Posiciona os botões no centro vertical */
+    transform: translateY(-100%); /* Ajusta a posição verticalmente */
+    background-color: rgba(0, 0, 0, 0.2); /* Fundo preto semitransparente */
+    color: #00ffff; /* Define a cor do texto */
+    border: none; /* Remove a borda */
+    border-radius: 15px;
+    padding: 15px; /* Define o espaçamento interno */
+    cursor: pointer; /* Indica que o botão é clicável */
+    font-size: 30px; /* Define tamanho da fonte */
+    z-index: 10; /* Garante que os botões fiquem acima dos outros elementos */
+    transition: background 0.3s; /* Adiciona transição suave */
+}
+
+/* ==== EFEITO HOVER NOS BOTÕES DE NAVEGAÇÃO ==== */
+.buttom-ante:hover, .buttom-prox:hover {
+    background-color: rgba(0, 0, 0, 0.8); /* Deixa o fundo um pouco mais escuro ao passar o mouse */
+}
+
+/* ==== POSICIONAMENTO DOS BOTÕES DE NAVEGAÇÃO ==== */
+.buttom-ante {
+    left: 3%; /* Posiciona o botão de voltar à esquerda */
+}
+
+.buttom-prox {
+    right: 3%; /* Posiciona o botão de avançar à direita */
+}
+
+/* ==== ESTILIZAÇÃO PARA TELAS MENORES ==== */
+@media (max-width: 768px) {
+    .news__rolante {
+        width: 90%; /* Reduz a largura do container para telas menores */
+    }
+
+    .buttom-ante, .buttom-prox {
+        font-size: 18px; /* Reduz o tamanho da fonte dos botões */
+        padding: 10px; /* Reduz o espaçamento interno */
+    }
+
+    .prev-btn {
+        left: 2%; /* Ajusta a posição do botão para telas menores */
+    }
+
+    .next-btn {
+        right: 2%; /* Ajusta a posição do botão para telas menores */
+    }
+}
+
+.news-one-vertical{
+    display: flex;
+    margin-left: 126px;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    gap: 10px;
+    
+}
+
+.card-big{
+    bottom: 50px;
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 50px;
+    margin-bottom: 70px;
+    flex-shrink: 0;
+    margin: 50px;
+    width: 1350px;
+}
+
+.big-news{
+    display: flex;
+    overflow-x: hidden; /* Oculta o conteúdo extra horizontalmente */
+    scroll-behavior: smooth; /* Adiciona efeito suave ao scroll */
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+}
+/* ==== ESTILIZAÇÃO DOS BOTÕES DE NAVEGAÇÃO DO BIG CARD ==== */
+.buttom-ante-big, .buttom-prox-big {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.2);
+    color: #00ffff;
+    border: none;
+    border-radius: 15px;
+    padding: 15px;
+    cursor: pointer;
+    font-size: 30px;
+    z-index: 10;
+    transition: background 0.3s;
+}
+
+/* ==== POSICIONAMENTO DOS BOTÕES DO BIG CARD ==== */
+.buttom-ante-big {
+    left: 3%;
+}
+
+.buttom-prox-big {
+    right: 40%;
+}
+
+/* ==== EFEITO HOVER NOS BOTÕES ==== */
+.buttom-ante-big:hover, .buttom-prox-big:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.news-vertical{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    height: 500px;
+    width: 95%;
+}
+
+.news-scroll {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    max-height: 400px;
+}
+
+.news-scroll::-webkit-scrollbar{
+    display: none;
+}
+
+.buttom-up, .buttom-down{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.2);
+    color: #00ffff;
+    border: none;
+    border-radius: 15px;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    z-index: 10;
+    transition: background 0.3s;
+}
+
+.buttom-up:hover, .buttom-down:hover{
+    background-color: #f90;
+    color: black;
+}
+
+.buttom-up{
+    top: -35px;
+}
+
+.buttom-down{
+    bottom: -35px;
+}
+
+.news-one, .news-two, .news-tree{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    gap: 10px;
+
+}
+.news-one{
+    align-items: flex-start;
+    margin-right: -100px;
+    
+}
+
+.news-two{
+    align-items: center;
+    margin-right: -110px;
+}
+
+.news-tree{
+    align-items: flex-end;
+
+}
+
+
+
+.title-one, .title-two, .title-tree{
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    padding: 10px 15px;
+    display: flex; /* Mantém alinhamento correto */
+    align-items: center; /* Centraliza texto verticalmente */
+}
+
+.title-one::before,
+.title-two::before,
+.title-tree::before {
+    content: "A"; /* Adiciona a letra antes do título */
+    font-size: 28px;
+    font-weight: bold;
+    background-color: #00ffff;
+    color: #00ffff;
+    margin-right: 10px; /* Espaço entre "A" e o título */
+}
+
+
+
+
+
+.footer{
+    top: 50px;
+    position: absolute;
+    color: white;
+    padding: 10px;   
+    text-align: center;
+    position: relative;
+    margin-top: 50px;
+    margin-bottom: 100px;
+    bottom: 0;
+    width: 100%;
+    height: 100px;
+}
+
+.footer-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: -20px;
+    margin-bottom: 20px;
+}
+
+.footer-links{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    gap: 15px;
+}

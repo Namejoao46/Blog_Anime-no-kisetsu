@@ -1,0 +1,72 @@
+
+/* Define o tamanho do card de notícias */
+.card-noticias{
+    width: 485px;
+    height: 400px;
+    min-width: 300px;
+}
+
+/* Define o contêiner da imagem dentro do card */
+.noticias_img{
+    width: 465px;
+    height: 240px;
+    position: relative;
+}
+
+/* Ajusta a exibição da imagem dentro do contêiner */
+.noticias_img img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* Remove estilos padrões de <h1> e <a> */
+h1, a{
+    all: unset;
+}
+
+/* Contêiner que agrupa nome e data */
+.card-description{
+    display: flex;
+    gap: 10px;
+    position: absolute;
+    background: rgba(0, 0, 0, 0);
+    left: 5px;
+    top: 0px;
+
+}
+
+/* Estilização do nome do anime */
+.name{
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 5px;
+    color: white; 
+}
+
+/* Estilização da data */
+.data{
+    color: #00ffff;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+}
+
+/* Estilos compartilhados entre nome e data */
+.card-description, .name, .data {
+    font-weight: bold;
+    font-size: 16px;
+    padding: 5px 10px;
+}
+
+/* Garante que o texto dentro do card fique organizado corretamente */
+.noticias_text{
+    white-space: normal;
+}
+
+/* Estilo do texto do card */
+.noticias_text h1 a{
+    color: white;
+    font-size: 21px;
+    text-decoration: none;
+
+}
