@@ -4,11 +4,14 @@ import { MenuBarComponent } from "../../components/menu-bar/menu-bar.component";
 import { NoticiasComponent } from "../../components/noticias/noticias.component";
 import { NoticiasVerticalComponent } from '../../components/noticias-vertical/noticias-vertical.component';
 import { BigCardComponent } from "../../components/big-card/big-card.component";
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 
 @Component({
   selector: 'app-home',
-  imports: [MenuTitleComponent, MenuBarComponent, NoticiasComponent, NoticiasVerticalComponent, BigCardComponent],
+  imports: [MenuTitleComponent, MenuBarComponent, NoticiasComponent, NoticiasVerticalComponent, BigCardComponent, CommonModule, FormsModule, RouterModule],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
