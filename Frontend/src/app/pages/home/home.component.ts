@@ -11,6 +11,7 @@ import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-home',
+  standalone: true,
   imports: [MenuTitleComponent, MenuBarComponent, NoticiasComponent, NoticiasVerticalComponent, BigCardComponent, CommonModule, FormsModule, RouterModule],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],

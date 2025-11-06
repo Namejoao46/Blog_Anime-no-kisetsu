@@ -2,21 +2,20 @@ import { Component } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-login',
   standalone: true,
   imports: [CommonModule, FormsModule, RouterModule],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
   username = '';
   password = '';
-  router: any;
 
-  constructor(private auth: AuthService) {}
+  constructor(private auth: AuthService, private router: Router) {}
 
   onLogin() {
     this.auth.login(this.username, this.password).subscribe({
@@ -25,7 +24,7 @@ export class LoginComponent {
         alert('Login realizado com sucesso!');
         this.router.navigate(['/home']);
       },
-      error: (err: any) => alert('Credenciais inválidas')
+      error: () => alert('Credenciais inválidas')
     });
   }
 }
