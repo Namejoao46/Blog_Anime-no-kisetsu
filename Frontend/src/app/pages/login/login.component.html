@@ -1,10 +1,84 @@
-<div class="conteiner">
-  <div class="cadastro">
-    <h2>Login</h2>
-    <form (ngSubmit)="onLogin()">
-        <input type="text" [(ngModel)]="username" name="username" placeholder="Usuário" required>
-        <input type="password" [(ngModel)]="password" name="password" placeholder="Senha" required />
-      <button type="submit">Entrar</button>
-    </form>
+<div class="container">
+  <div class="container-login" [ngClass]="{ 'active': !showLogin }" >
+    <div class="form-box login">
+      <form (ngSubmit)="onLogin()">
+        <h1>Login</h1>
+            <div class="input-box">
+              <input [(ngModel)]="username" name="username" placeholder="Usuário" />
+              <i><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAABjElEQVR4AeyWTStEURjHJyHlA9iIUmKFUOxkJ0r5BhQWFhYsfAVJyULKB7BUsrCxUkKUlw0KKQsp2css5vfUNM2597w8595pVjP9f+fMuc/L/3Zm5p5pKtT51TC0bbjsSieBXuiCFlBLitXJJA7AIkzDJEzBAoyCSjGGY3QcB5uGuTgBQWkNZesGA936iAtMbmkNg43KFv3l2TlpDTucHcxAME9raLbNsdIa/io9gnlawzel4WsoT2v4QqN38OmL4D14pTWUJmcMz2CT3MypLZC8FmMotecMR3ANj3ADxyA3U2QOKtZQGv4wPMAV3ME3qBVr2EpnF4TC0hjK02OTVh/w5+GT2C6MgFMhw20qn2ADusEnObJWSbiFA2iDlHyGe2SvQxYtUXQIKbkM5ShaSWXHXZgjfRYMuQzlkDUSMy6Wk3Uuw/lkYsb1DHXtUJHNsIdoM9RKQ9WNbIbymDqpTsrx/pLaC6jIZihB+bDlSyM/h6ys0Sj1P8dlSG5hn2ErBzvU/oMhn6GRWKtFCQAA///B4FspAAAABklEQVQDAGrxQjnLtcBhAAAAAElFTkSuQmCC" alt=""></i>
+            </div>
+            <div class="input-box">
+              <input [(ngModel)]="password" name="password" type="password" placeholder="Senha" />
+              <i><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAABWUlEQVR4AeyVu0oDQRSG1xtiISg2voCFF0QRL1iI7yAWPo+NrY0I2qngpbO0URARJU2KkNRpAgmEFCmSkNt3iiwsMzm7k11Cig3/R2bnnDk/c/Yy096Yf6nhsIZvEDiFHXCSa0v3qf4Bv3AFn/AFJxBJLoZrVHyHV1iCI1iGO3iDTQiVi+Ej1a7hHnow0BODS3iAUEU13KPSAdyCTbJLuZ+SY4v7c1ENV1lRhRrY1GSyAOugKqqh5LXVSp7XIj4PqqSQmpB0cOIMt9jhGcg9vOH/QkFejRni57ALVmk73GbFMazAFJRgUaFCrAPybsoH4pCxIc0w9IkzqgUn5PMXnOFKM1wgHkdzLJ6FgDTDQGJSF6lhUp3066Qt9VuR1EBraTmmiRxnxgmjGWYwbMAo6rLoHwxphrLDF1Z8w58DP+Q+QxEMaYaSLCd5nkHWgRy5dbAqzNC6KM5kHwAA//+UKJuqAAAABklEQVQDANWlPjlmmy47AAAAAElFTkSuQmCC" alt=""></i>
+            </div>
+            <div class="forgot-link">
+              <a href="#">Forgot password?</a>
+            </div>
+
+              <button type="submit" class="btn">Entrar</button>
+              <p>or login with social platforms</p>
+            <div class="social-icons">
+                <a href="mailto:paulo.joao.avs@gmail.com">
+                  <i><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAACa0lEQVR4AeyWyUtWURjGv4rmadGilhENRIsiCIqgAaJFFNSuP6CBggqKWhRRVIsmopEGCNqG4E5FXKgIIg6IG0Vd6EIUQVQUJ8Th9/B93/Xc13P87qfiSnl+5z3nPeeeR++5972uTa3wz6qh74avJ7kfTsFeWAeJlfSW7mbH99AAE9AO1dABI1AG92EbLKhchpp/zg6d8BiOwxpwtZHBBfgC3XALgtKGocldTJTDK9gESbSdRb/hOngVMtS5FHLFGchXP7ngP3gVMnzDap9ZK/k7cAI2wGa4BzpPQuojzV2YAa98hgdZ+QisfpE4Bor1xEkYh+9wGi6BzpkQls/wKcv16BMi/aOnv0wGdL0q8WZN0hrqCbxq1vQwfgDLImt4mF13givdwiE3kemfI75MwDXWRLKGe6KZuU7dXDfWk+ELMrlQQWBZWtZwRzoda/VkxhJ5DmJ3zBoOeDY74MkppfNWzMWgu8Aa9rqTmf7RTLRBdbSSpCVmwLweOkJa1lBFuT89FbW36W0FK70qOkcXvYsqCO5avbPR2BpOMaOSRoi0j95nSKKHLNoCrgrcgTXU3CeaaXB1g8EfCBVxnecT5l+Dq2IGXRDJZ9jC7AewukmiCVQrVUtlrg/wRXKqpe+IVnpPYzmfoRY8o6kBK9XZHyRrYQz04JQST4LVWxLz3uGQoc7yChc0wmL0l4tUkwlxhQy1qo/mLBRBUo2yUHVXZ+79RC1kyLWpYZrLcAS+ga8wkE610chIpfEr/aByGWYvbKajmqh/pvRhPs84i/7POcRYRvoF6YaV1DC7gz66VQwqHPI653wN8VmaZgEAAP//6W3DIAAAAAZJREFUAwC3ZWg5ivp9IQAAAABJRU5ErkJggg==" alt="">
+                  </i></a>
+                <a href="https://bing.com/search?q=GitHub+profile+namejoao46">
+                  <i><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAAC10lEQVR4AcyWS6hNURjHt1eMJEUeIZJXmRsIEUkMFCImyrMUKZK3MCCKJCQmHmXAhFImHmEgIwaUibwiJI+EiN9v3btPa6+9z7nnuCW3/2996/v2Wufb67HXul2zf/z33yfszYTMhGWwGVbBbBgATamZEXbhlxbAVXgH2pPYvXAMLsMruAm+SHdsXXWUcCo9H8MFcGQ9sFXypSbxwBd5ip0LlWqUcCk9rsEoaEWDaXwJdkBJ9RKupuVp6AZ/q5103A0FVSWcRoujkMu66/YzD9Sxv4nfAdcWE7SVcj7UlCbUP8JT1wSTfaFYC7NgGJyDE7AOjDkTh6lfhHEwEUzyEJvrEJWeEGSCUGkvFmLHQq63VH6BcicuoeKnYBJHfRzf5POwbi5M0PtQthWDMMshKE3oG4cH7cUQbMNtzvMqORtxfEXuxAn7E3RKMDWdotbR2tGkJNc9Do7HGQ5ZnHCKgYTSLkue13PdB5+Sh9P144Tp8fSSBoJpWT/o8QBijdSJE/YxENGZb9CfyTebdRloESf8aCCiH/XadqbeqoYmHcIUxwnT6XOEno9Jv6ZcN4jEjZ/rxAlvG0jYgp8fAlSbVtVmu2XvOOFrAvch1mQcr6BWkppsMf1ivcG5B4XPQt+TQ/uMYhE8gpVwFzaC52xfbKxeOF5j67HXwaMNU5C/G77neIS2OEvhXLvgXk8T8L3ftPuon4GvEOsbjlN/EFv1LX8m7neJyUoj/E50A6gZFH6sHtJewN7ou4iZAFPQjYJXdLbh1s7WdIQ8y/zx7VZgP3hoe6j79t4UhEryX49SkIBHnAc91TZVJfSJC+9IR+A8gfNgsjXYKlUd8HtoWGpfLyFtswMUc8DFdgN54ofjiViqOKFXmjPiVKbtSmuYNrhCYAy4815gq9aPcLionVZnZjQBlwVTVqMR5q09kvy3wbtxUx5MrP+teRS69h+SZwW3mYSFDp11/gAAAP//bs1krAAAAAZJREFUAwBQuXM57PcDbgAAAABJRU5ErkJggg==" alt=""></i>
+                </a>
+                <a href="#">
+                  <i><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAADCUlEQVR4AeyWSchPURTAnzmZZyFL8xwpQ6ZY2BHZiVgoJSuUOcqUJCILQ2wUsZKikClCiMhCSSJE5nn6/V73vt73/sPnk6x8nd89555z7jvv3nfv/X/1k3/897+gC16PpgeM/Q0GklN11aoF+zP4BLyDe3D6N7hBzge4AKOhRCoVXEimgyeiv8Nt2AOrq7Cb2C34AiPgLKyBGlKu4CAyNsNLmA4twdnOQa+qwlxiA8D8KehnsAzGQSblCm4hqn8m+jDURYaS7OpcQc8CZadNxAdHW92Bxs3hEh7HrqvsY4AvvAjteJ/TE7sfpFIs2Dv1JonfIpg1VFt6Lus59Bu4BOugMyjnafRfQys3baAPpFIs2D71JsmLoPNqBp0HsBJGQQsYDkvgPswLtELvB8XvqO5oI8WCzXSCb4nKxGXZS685bIS+0BR6wQpoDDvAF0Bl8jVYjYJOigUbhkBMDN3EZbOAs1mM8w58As+nW9/ZeUFswpeXn6FjLDWLBVMnTZaArQyzga1QTjyDnwkMgbzEgg2is1jwWwhkCfSddTf0a/ChqLLyEK+fpAs6ipeGdlYnM/TmyBf0JdwsboYmuZyi2R3HR3gMUeLz40xLvmEM/Igjgr4etJdBMGuoqfR8mavovMRPE2dasWB8szh4A4aD1qMnQ17G0NkGihtIHYm701VKfcUHu/MM+LbqyGWM2eDZO4b2fHnon2CfgU6wAE5CXuJz4nNLZvg8ZGcHNfRVB2j8vTuFbgOeOfP8KdKOsySUSetgueFSszhDz5UBH6wuchfHBPAC8KiovXXiVUaohgwOPcelZrHgU7wGvWyL34pQJh4PN4i7MnMWjEn0vZGcXXY3FwuSkyy1Aa+yaeg/Ee9dP4Fjl9Nku75cwaMkHAG/zyH0IzgI/krUhnkx3/H+emxnbCblChp0ZvMx3kJX8I39lagN88x3yZ3ZeMbGs42ZlOzS1Eljkre/t4cXc7X/ZfIxf+1HMr4drIXij0DFguSm8op2F9S2lDHu5X6R/PdQViotadnkv+H8BQAA///Uxo3OAAAABklEQVQDAHwipjkLGnWjAAAAAElFTkSuQmCC" alt=""></i>
+                </a>
+                <a href="www.linkedin.com/in/joaopauloavs">
+                  <i><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAABoUlEQVR4AeyVTStFURSGt4+UIkoGZkoykzIwZKTMCBkZKSUGRiYkH+UHSMrnyECRMsCAMvIXlKTkH6AMTHjW6e7datm3e8+9BwNu73P22mutu957TvecU+l++PM3DZu5yhMwDS2Qqewl7WD6PezCBjxAN2Qmayhn1qCm1xJPQmayhlWRyTWRXMkpa3gRmXQWyZWcsoZXTOqHAziGYZCVJRtZQ5l6yWEcRuEEMpU1bGR6n0FuE1KJ5B+r6+1J1rlW59wCyA88Yl2GAfgia9hFx7Whl73XFoGuz7KfArl9VlmHYAQW4RwOoRqCrGEoFBnIGW/Sm2/OGLUVCMrXGBoKBD0F6lKe4RB8QkCyVH3wxVNYg32wqifRCYmyMJxj0iDMgzypdlit2nyiXMM3Bq2DlvxT9V7iJjkI5RreMeQdtJ70JhfX5VZXrqGcoZ/l11cfqDU8o9MaVqghEtq95GKEvrSGsWGpcv+GqS5XMc2/fkkf+ZXyatHckvOSt4Wu7fmCWp+JdY/EN+QS2TMUwyUqGm24bWqxZ+eL6ZFZeQ3p/V59AgAA//+/Ob4vAAAABklEQVQDAFKSPzkuKmLtAAAAAElFTkSuQmCC" alt=""></i>
+                </a>
+            </div> 
+          </form>
+    </div>
+
+    <div class="form-box register">
+      <form (ngSubmit)="onRegister()">
+      <h1>Register</h1>
+          <div class="input-box">
+            <input [(ngModel)]="username" name="username" placeholder="Usuário" />
+            <i>
+              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAABjElEQVR4AeyWTStEURjHJyHlA9iIUmKFUOxkJ0r5BhQWFhYsfAVJyULKB7BUsrCxUkKUlw0KKQsp2css5vfUNM2597w8595pVjP9f+fMuc/L/3Zm5p5pKtT51TC0bbjsSieBXuiCFlBLitXJJA7AIkzDJEzBAoyCSjGGY3QcB5uGuTgBQWkNZesGA936iAtMbmkNg43KFv3l2TlpDTucHcxAME9raLbNsdIa/io9gnlawzel4WsoT2v4QqN38OmL4D14pTWUJmcMz2CT3MypLZC8FmMotecMR3ANj3ADxyA3U2QOKtZQGv4wPMAV3ME3qBVr2EpnF4TC0hjK02OTVh/w5+GT2C6MgFMhw20qn2ADusEnObJWSbiFA2iDlHyGe2SvQxYtUXQIKbkM5ShaSWXHXZgjfRYMuQzlkDUSMy6Wk3Uuw/lkYsb1DHXtUJHNsIdoM9RKQ9WNbIbymDqpTsrx/pLaC6jIZihB+bDlSyM/h6ys0Sj1P8dlSG5hn2ErBzvU/oMhn6GRWKtFCQAA///B4FspAAAABklEQVQDAGrxQjnLtcBhAAAAAElFTkSuQmCC" alt="">
+            </i>
+          </div>
+          <div class="input-box">
+            <input [(ngModel)]="password" name="password" type="password" placeholder="Senha" />
+            <i><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAABWUlEQVR4AeyVu0oDQRSG1xtiISg2voCFF0QRL1iI7yAWPo+NrY0I2qngpbO0URARJU2KkNRpAgmEFCmSkNt3iiwsMzm7k11Cig3/R2bnnDk/c/Yy096Yf6nhsIZvEDiFHXCSa0v3qf4Bv3AFn/AFJxBJLoZrVHyHV1iCI1iGO3iDTQiVi+Ej1a7hHnow0BODS3iAUEU13KPSAdyCTbJLuZ+SY4v7c1ENV1lRhRrY1GSyAOugKqqh5LXVSp7XIj4PqqSQmpB0cOIMt9jhGcg9vOH/QkFejRni57ALVmk73GbFMazAFJRgUaFCrAPybsoH4pCxIc0w9IkzqgUn5PMXnOFKM1wgHkdzLJ6FgDTDQGJSF6lhUp3066Qt9VuR1EBraTmmiRxnxgmjGWYwbMAo6rLoHwxphrLDF1Z8w58DP+Q+QxEMaYaSLCd5nkHWgRy5dbAqzNC6KM5kHwAA//+UKJuqAAAABklEQVQDANWlPjlmmy47AAAAAElFTkSuQmCC" alt=""></i>
+          </div>
+            <button type="submit" class="btn">Register</button>
+            <p>Fala ai, se curtiu, siga-nos.</p>
+          <div class="social-icons">
+              <a href="#">
+                  <i><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAACa0lEQVR4AeyWyUtWURjGv4rmadGilhENRIsiCIqgAaJFFNSuP6CBggqKWhRRVIsmopEGCNqG4E5FXKgIIg6IG0Vd6EIUQVQUJ8Th9/B93/Xc13P87qfiSnl+5z3nPeeeR++5972uTa3wz6qh74avJ7kfTsFeWAeJlfSW7mbH99AAE9AO1dABI1AG92EbLKhchpp/zg6d8BiOwxpwtZHBBfgC3XALgtKGocldTJTDK9gESbSdRb/hOngVMtS5FHLFGchXP7ngP3gVMnzDap9ZK/k7cAI2wGa4BzpPQuojzV2YAa98hgdZ+QisfpE4Bor1xEkYh+9wGi6BzpkQls/wKcv16BMi/aOnv0wGdL0q8WZN0hrqCbxq1vQwfgDLImt4mF13givdwiE3kemfI75MwDXWRLKGe6KZuU7dXDfWk+ELMrlQQWBZWtZwRzoda/VkxhJ5DmJ3zBoOeDY74MkppfNWzMWgu8Aa9rqTmf7RTLRBdbSSpCVmwLweOkJa1lBFuT89FbW36W0FK70qOkcXvYsqCO5avbPR2BpOMaOSRoi0j95nSKKHLNoCrgrcgTXU3CeaaXB1g8EfCBVxnecT5l+Dq2IGXRDJZ9jC7AewukmiCVQrVUtlrg/wRXKqpe+IVnpPYzmfoRY8o6kBK9XZHyRrYQz04JQST4LVWxLz3uGQoc7yChc0wmL0l4tUkwlxhQy1qo/mLBRBUo2yUHVXZ+79RC1kyLWpYZrLcAS+ga8wkE610chIpfEr/aByGWYvbKajmqh/pvRhPs84i/7POcRYRvoF6YaV1DC7gz66VQwqHPI653wN8VmaZgEAAP//6W3DIAAAAAZJREFUAwC3ZWg5ivp9IQAAAABJRU5ErkJggg==" alt="">
+                  </i></a>
+                <a href="https://bing.com/search?q=GitHub+profile+namejoao46">
+                  <i><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAAC10lEQVR4AcyWS6hNURjHt1eMJEUeIZJXmRsIEUkMFCImyrMUKZK3MCCKJCQmHmXAhFImHmEgIwaUibwiJI+EiN9v3btPa6+9z7nnuCW3/2996/v2Wufb67HXul2zf/z33yfszYTMhGWwGVbBbBgATamZEXbhlxbAVXgH2pPYvXAMLsMruAm+SHdsXXWUcCo9H8MFcGQ9sFXypSbxwBd5ip0LlWqUcCk9rsEoaEWDaXwJdkBJ9RKupuVp6AZ/q5103A0FVSWcRoujkMu66/YzD9Sxv4nfAdcWE7SVcj7UlCbUP8JT1wSTfaFYC7NgGJyDE7AOjDkTh6lfhHEwEUzyEJvrEJWeEGSCUGkvFmLHQq63VH6BcicuoeKnYBJHfRzf5POwbi5M0PtQthWDMMshKE3oG4cH7cUQbMNtzvMqORtxfEXuxAn7E3RKMDWdotbR2tGkJNc9Do7HGQ5ZnHCKgYTSLkue13PdB5+Sh9P144Tp8fSSBoJpWT/o8QBijdSJE/YxENGZb9CfyTebdRloESf8aCCiH/XadqbeqoYmHcIUxwnT6XOEno9Jv6ZcN4jEjZ/rxAlvG0jYgp8fAlSbVtVmu2XvOOFrAvch1mQcr6BWkppsMf1ivcG5B4XPQt+TQ/uMYhE8gpVwFzaC52xfbKxeOF5j67HXwaMNU5C/G77neIS2OEvhXLvgXk8T8L3ftPuon4GvEOsbjlN/EFv1LX8m7neJyUoj/E50A6gZFH6sHtJewN7ou4iZAFPQjYJXdLbh1s7WdIQ8y/zx7VZgP3hoe6j79t4UhEryX49SkIBHnAc91TZVJfSJC+9IR+A8gfNgsjXYKlUd8HtoWGpfLyFtswMUc8DFdgN54ofjiViqOKFXmjPiVKbtSmuYNrhCYAy4815gq9aPcLionVZnZjQBlwVTVqMR5q09kvy3wbtxUx5MrP+teRS69h+SZwW3mYSFDp11/gAAAP//bs1krAAAAAZJREFUAwBQuXM57PcDbgAAAABJRU5ErkJggg==" alt=""></i>
+                </a>
+                <a href="#">
+                  <i><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAADCUlEQVR4AeyWSchPURTAnzmZZyFL8xwpQ6ZY2BHZiVgoJSuUOcqUJCILQ2wUsZKikClCiMhCSSJE5nn6/V73vt73/sPnk6x8nd89555z7jvv3nfv/X/1k3/897+gC16PpgeM/Q0GklN11aoF+zP4BLyDe3D6N7hBzge4AKOhRCoVXEimgyeiv8Nt2AOrq7Cb2C34AiPgLKyBGlKu4CAyNsNLmA4twdnOQa+qwlxiA8D8KehnsAzGQSblCm4hqn8m+jDURYaS7OpcQc8CZadNxAdHW92Bxs3hEh7HrqvsY4AvvAjteJ/TE7sfpFIs2Dv1JonfIpg1VFt6Lus59Bu4BOugMyjnafRfQys3baAPpFIs2D71JsmLoPNqBp0HsBJGQQsYDkvgPswLtELvB8XvqO5oI8WCzXSCb4nKxGXZS685bIS+0BR6wQpoDDvAF0Bl8jVYjYJOigUbhkBMDN3EZbOAs1mM8w58As+nW9/ZeUFswpeXn6FjLDWLBVMnTZaArQyzga1QTjyDnwkMgbzEgg2is1jwWwhkCfSddTf0a/ChqLLyEK+fpAs6ipeGdlYnM/TmyBf0JdwsboYmuZyi2R3HR3gMUeLz40xLvmEM/Igjgr4etJdBMGuoqfR8mavovMRPE2dasWB8szh4A4aD1qMnQ17G0NkGihtIHYm701VKfcUHu/MM+LbqyGWM2eDZO4b2fHnon2CfgU6wAE5CXuJz4nNLZvg8ZGcHNfRVB2j8vTuFbgOeOfP8KdKOsySUSetgueFSszhDz5UBH6wuchfHBPAC8KiovXXiVUaohgwOPcelZrHgU7wGvWyL34pQJh4PN4i7MnMWjEn0vZGcXXY3FwuSkyy1Aa+yaeg/Ee9dP4Fjl9Nku75cwaMkHAG/zyH0IzgI/krUhnkx3/H+emxnbCblChp0ZvMx3kJX8I39lagN88x3yZ3ZeMbGs42ZlOzS1Eljkre/t4cXc7X/ZfIxf+1HMr4drIXij0DFguSm8op2F9S2lDHu5X6R/PdQViotadnkv+H8BQAA///Uxo3OAAAABklEQVQDAHwipjkLGnWjAAAAAElFTkSuQmCC" alt=""></i>
+                </a>
+                <a href="www.linkedin.com/in/joaopauloavs">
+                  <i><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAABoUlEQVR4AeyVTStFURSGt4+UIkoGZkoykzIwZKTMCBkZKSUGRiYkH+UHSMrnyECRMsCAMvIXlKTkH6AMTHjW6e7datm3e8+9BwNu73P22mutu957TvecU+l++PM3DZu5yhMwDS2Qqewl7WD6PezCBjxAN2Qmayhn1qCm1xJPQmayhlWRyTWRXMkpa3gRmXQWyZWcsoZXTOqHAziGYZCVJRtZQ5l6yWEcRuEEMpU1bGR6n0FuE1KJ5B+r6+1J1rlW59wCyA88Yl2GAfgia9hFx7Whl73XFoGuz7KfArl9VlmHYAQW4RwOoRqCrGEoFBnIGW/Sm2/OGLUVCMrXGBoKBD0F6lKe4RB8QkCyVH3wxVNYg32wqifRCYmyMJxj0iDMgzypdlit2nyiXMM3Bq2DlvxT9V7iJjkI5RreMeQdtJ70JhfX5VZXrqGcoZ/l11cfqDU8o9MaVqghEtq95GKEvrSGsWGpcv+GqS5XMc2/fkkf+ZXyatHckvOSt4Wu7fmCWp+JdY/EN+QS2TMUwyUqGm24bWqxZ+eL6ZFZeQ3p/V59AgAA//+/Ob4vAAAABklEQVQDAFKSPzkuKmLtAAAAAElFTkSuQmCC" alt=""></i>
+                </a>
+          </div> 
+        </form>
+    </div>
+    <div class="toggle-box">
+          <div class="toggle-panel toggle-left">
+            <h1>Bem-vindo de volta!</h1>
+            <img src="https://i.postimg.cc/W4kVt624/Chat-GPT-Image-9-de-nov-de-2025-15-43-42.png" alt="">
+            <p>Para continuar, faça login com suas credenciais</p>
+            <button class="btn register-btn" (click)="toggleToRegister()">Register</button>
+          </div>
+          
+          <div class="toggle-panel toggle-right">
+            <h1>Olá, amigo!</h1>
+            <img src="https://i.postimg.cc/LsDsm3vP/Chat-GPT-Image-9-de-nov-de-2025-15-57-58.png" alt="">
+            <p>Entre para começar sua jornada conosco</p>
+            <button class="btn login-btn" (click)="toggleToLogin()">Login</button>
+          </div>
+        </div>
   </div>
 </div>

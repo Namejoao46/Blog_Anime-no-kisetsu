@@ -20,6 +20,12 @@ public class JwtFilter extends OncePerRequestFilter {
 @Autowired private JwtUtil jwtUtil;
   @Autowired private CustomUserDetailsService userDetailsService;
 
+ @Override
+  protected boolean shouldNotFilter(HttpServletRequest request) throws ServletException {
+    String path = request.getRequestURI();
+    return path.startsWith("/auth/");
+  }
+  
   @Override
   protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
       throws ServletException, IOException {

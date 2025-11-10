@@ -8,7 +8,7 @@ html, body{
     position: relative;
     height: 100%;
     background-color: #0d1117;
-    z-index: -2;
+    z-index: 0;
 }
 
 .container{
@@ -24,6 +24,7 @@ html, body{
 .folhas {
     position: relative;
     display: flex;
+    z-index: 1;
 }
 
 .folhas span {
@@ -38,28 +39,28 @@ html, body{
 }
 
 .folha.orange {
-  background: linear-gradient(135deg, #ff5c00, #81c784);
+  background: linear-gradient(135deg, #ff5c00, #ffb700);
   box-shadow: 0 0 0 10px #ff5c0044,
                0 0 50px #ff5c00,
                0 0 100px #ff5c00;
 }
 
 .folha.green {
-  background: linear-gradient(135deg, #a2ff00, #fdd835);
+  background: linear-gradient(135deg, #a2ff00, #00ffd5);
   box-shadow: 0 0 0 10px #a2ff0044,
                0 0 50px #a2ff00,
                0 0 100px #fdd835;
 }
 
 .folha.blue {
-  background: linear-gradient(135deg, #007bff, #ffab91);
+  background: linear-gradient(135deg, #007bff, #7a00ff);
   box-shadow: 0 0 0 10px #007bff44,
                0 0 50px #007bff,
                0 0 100px #007bff;
 }
 
 .folha.pink {
-  background: linear-gradient(135deg, #ff00aa, #e57373);
+  background: linear-gradient(135deg, #ff00aa, #ff6633);
   box-shadow: 0 0 0 10px #ff00aa44,
                0 0 50px #ff00aa,
                0 0 100px #ff00aa;

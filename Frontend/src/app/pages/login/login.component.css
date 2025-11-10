@@ -1,38 +1,326 @@
-.conteiner {
-  min-height: 755px;
-  /*background-image: linear-gradient(
-    90deg,
-    black 0%,
-    black 11.11%,
-    #ff5c00 11.11%,
-    #ff5c00 22.22%,
-    black 22.22%,
-    black 33.33%,
-    #a2ff00 33.33%,
-    #a2ff00 44.44%,
-    black 44.44%,
-    black 55.55%,
-    #007bff 55.55%,
-    #007bff 66.66%,
-    black 66.66%,
-    black 77.77%,
-    #ff00aa 77.77%,
-    #ff00aa 88.88%,
-    black 88.88%,
-    black 100%
-  );*/
-  background-size: 100% 100%;
+.container {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 1;
 }
 
+.container-login {
+  position: relative;
+  width: 850px;
+  height: 550px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 30px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, .2);
+  margin: 20px;
+  z-index: 4;
+  overflow: hidden;
+}
 
-.login{
-  background-color: white;
+/* ===========================
+   FORMULÁRIOS (Login/Register)
+=========================== */
+/* estado base: login à direita, register à esquerda (fora da vista) */
+.form-box {
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;      /* organiza o conteúdo verticalmente */
+  align-items: center;         /* centraliza horizontalmente */
+  justify-content: center;     /* centraliza verticalmente */
+  text-align: center;          /* centraliza texto */
   padding: 40px;
-  border-radius: 8px;
-  max-width: 400px;
+  box-sizing: border-box;
+  transition: opacity .6s ease, visibility 0s .6s, right .6s ease, left .6s ease;
+  z-index: 4;
+  opacity: 1;
+  visibility: visible;
+}
+
+/* login fica no lado direito por padrão */
+.form-box.login {
+  right: 0;
+  left: auto;
+  pointer-events: auto;
+}
+
+/* register fica no lado esquerdo por padrão (invisível) */
+.form-box.register {
+  left: 0;
+  right: auto;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* ---------- Quando container fica active (indo p/ Register) ---------- */
+/* move o login para o centro-e-saída (para a direita metade) e oculta */
+.container-login.active .form-box.login {
+  right: 50%;
+  left: auto;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: right .6s ease, opacity .6s ease;
+}
+
+/* traz o register para o centro APÓS a animação do toggle (delay sincronizado) */
+.container-login.active .form-box.register {
+  left: 0;
+  right: auto;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition: left .6s ease 1.8s, opacity .8s ease 1.8s, visibility 0s 1.8s;
+  z-index: 5; /* aparece acima do toggle depois da animação */
+}
+
+/* ---------- Quando volta (Register -> Login) ---------- */
+/* ao remover .active, faça o inverso: esconder register e trazer login com delay */
+.container-login:not(.active) .form-box.register {
+  left: 0;            /* volta para a esquerda */
+  right: auto;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: left .6s ease, opacity .6s ease;
+}
+
+.container-login:not(.active) .form-box.login {
+  right: 0;           /* login volta à posição direita visível */
+  left: auto;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition: right .6s ease 1.8s, opacity .8s ease 1.8s, visibility 0s 1.8s;
+  z-index: 5;
+}
+
+/* ===========================
+   CONTEÚDO DO FORM
+=========================== */
+form {
   width: 100%;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.container-login h1 {
+  font-size: 36px;
+  margin: -10px 0;
+}
+
+.input-box {
+  position: relative;
+  margin: 30px 0;
+}
+
+.input-box input {
+  width: 100%;
+  padding: 13px 50px 13px 20px;
+  background: #eee;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  color: #0d1117;
+  font-weight: 500;
+}
+
+.input-box input::placeholder {
+  color: #0d1117;
+  font-weight: 400;
+}
+
+.input-box i {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  color: #0d1117;
+}
+
+.forgot-link {
+  margin: -15px 0 15px;
+}
+
+.forgot-link a {
+  font-size: 14.5px;
+  color: #333;
+  text-decoration: none;
+}
+
+.btn {
+  width: 100%;
+  height: 48px;
+  background: #131617;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: #fff;
+  font-weight: 600;
+}
+
+.container-login p {
+  font-size: 14.5px;
+  margin: 15px 0;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+}
+
+.social-icons a {
+  display: inline-flex;
+  padding: 10px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  font-size: 24px;
+  color: #00ffff;
+  text-decoration: none;
+  margin: 0 8px;
+}
+
+.social-icons a:hover img {
+  transform: scale(1.1);
+}
+
+/* ===========================
+   PAINEL DE TRANSIÇÃO
+=========================== */
+.toggle-box {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+.toggle-box::before {
+  content: '';
+  position: absolute;
+  left: -250%;
+  width: 300%;
+  height: 100%;
+  background-color: #131617 !important;
+  border-radius: 150px;
+  z-index: 0;
+  transition: 1.8s ease-in-out;
+}
+
+.container-login.active .toggle-box::before {
+  left: 50%;
+  z-index: 0;
+  transition: z-index 0s, left 1.8s ease-in-out;
+  transition-delay: 0s, 0s;
+}
+
+.toggle-panel {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 0;
+  transition: .6s ease-in-out;
+}
+
+.toggle-panel.toggle-left {
+  left: 0;
+  transition-delay: 1.2s;
+}
+
+.container-login.active .toggle-panel.toggle-left {
+  left: -50%;
+  transition-delay: .6s;
+}
+
+.toggle-panel.toggle-right {
+  right: -50%;
+  transition-delay: .6s;
+}
+
+.container-login.active .toggle-panel.toggle-right {
+  right: 0;
+  transition-delay: 1.2s;
+}
+
+.toggle-panel p {
+  margin-bottom: 20px;
+}
+
+.toggle-panel.toggle-left img,
+.toggle-panel.toggle-right img {
+  height: 50%;
+  padding: 10px;
+}
+
+.toggle-panel .btn {
+  width: 160px;
+  height: 46px;
+  background: transparent;
+  border: 2px solid #fff;
+  box-shadow: none;
+}
+
+/* ===========================
+   RESPONSIVIDADE
+=========================== */
+@media screen and (max-width: 650px) {
+  .container-login {
+    height: calc(100vh - 40px);
+  }
+
+  .form-box {
+    bottom: 0;
+    width: 100%;
+    height: 70%;
+  }
+
+  .toggle-box::before {
+    left: 0;
+    top: -270%;
+    width: 100%;
+    height: 300%;
+    border-radius: 20vw;
+  }
+
+  .container-login.active .toggle-box::before {
+    left: 0;
+    top: 70%;
+  }
+
+  .toggle-panel {
+    width: 100%;
+    height: 30%;
+  }
+
+  .toggle-panel.toggle-left {
+    top: 0;
+  }
+
+  .container-login.active .toggle-panel.toggle-left {
+    top: -30%;
+  }
+
+  .toggle-panel.toggle-right {
+    bottom: -30%;
+  }
+
+  .container-login.active .toggle-panel.toggle-right {
+    bottom: 0;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .toggle-panel h1 {
+    font-size: 30px;
+  }
 }
