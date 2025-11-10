@@ -1,0 +1,10 @@
+<form (ngSubmit)="onCriar()">
+    <input [(ngModel)]="titulo" name="titulo" placeholder="Título" required />
+    <textarea [(ngModel)]="texto" name="texto" placeholder="Conteúdo" required></textarea>
+    <button type="submit">Crir Noticia</button>
+</form>
+<div *ngIf="resultado">
+    <h3>Classificação:</h3>
+    <p><strong>Categoria:</strong> {{ resultado.categoria }}</p>
+    <p><strong>Subcategoria:</strong> {{ resultado.subcategoria }}</p>
+</div>
