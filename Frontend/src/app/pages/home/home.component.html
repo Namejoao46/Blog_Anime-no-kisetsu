@@ -39,14 +39,55 @@
     <app-menu-bar></app-menu-bar>
 </header>
 
-<app-menu-title 
-photoCover="https://wallpapercave.com/wp/wp6183530.png" 
-cardName="SOLO LEVELING" 
-cardData="JUN,02/2025"
-cardTitle="SOLO LEVELING VENCEDOR DO ANIME AWARDS 2025"
-cardDescription="Solo Leveling foi o grande vencedor, superando Frieren e a Jornada para o Além, Diários de uma Apotecária e Dandadan. Conquistou o público com sua animação de alta qualidade e história envolvente"
->
-</app-menu-title>
+<!-- ============================
+=========  big card  ============ 
+============================= -->
+
+
+<div class="menu-title-wrapper">
+  <button class="scroll-btn left" (click)="scrollLeftMenuTitle()">←</button>
+
+  <div #menuTitleRolante class="menu-title-rolante">
+    <app-menu-title 
+        *ngFor="let noticia of bigCards"
+        photoCover="noticia.imagemUrl" 
+        cardName="noticia.subgenero" 
+        cardData="noticia.dataPublicacao"
+        cardTitle="noticia.titulo"
+        cardDescription="noticia.texto"
+    />
+    <app-menu-title 
+        *ngFor="let noticia of bigCards"
+        photoCover="noticia.imagemUrl" 
+        cardName="noticia.subgenero" 
+        cardData="noticia.dataPublicacao"
+        cardTitle="noticia.titulo"
+        cardDescription="noticia.texto"
+    />
+    <app-menu-title 
+        *ngFor="let noticia of bigCards"
+        photoCover="noticia.imagemUrl" 
+        cardName="noticia.subgenero" 
+        cardData="noticia.dataPublicacao"
+        cardTitle="noticia.titulo"
+        cardDescription="noticia.texto"
+    />
+    <app-menu-title 
+        *ngFor="let noticia of bigCards"
+        photoCover="noticia.imagemUrl" 
+        cardName="noticia.subgenero" 
+        cardData="noticia.dataPublicacao"
+        cardTitle="noticia.titulo"
+        cardDescription="noticia.texto"
+    />
+  </div>
+
+  <button class="scroll-btn right" (click)="scrollRightMenuTitle()">→</button>
+</div>
+
+<!-- ============================
+=========  Ultimas noticias  ============ 
+============================= -->
 
 <div class="titulo-news">
     <h1>ULTIMAS NOTICIAS</h1>
@@ -55,83 +96,93 @@ cardDescription="Solo Leveling foi o grande vencedor, superando Frieren e a Jorn
         <button (click)="filtrarNoticias('')" class="categoria-todos">TODOS</button>
         <button (click)="filtrarNoticias('1')" class="categoria-anime">ANIME</button>
         <button (click)="filtrarNoticias('2')" class="categoria-manga">MANGA</button>
-        <button (click)="filtrarNoticias('3')" class="categoria-gamer">GAMER</button>
+        <button (click)="filtrarNoticias('3')" class="categoria-Gamer">Gamer</button>
     </div>
+
 <div class="news-container">
 
     <button (click)="scrollLeft()" class="buttom-ante">←</button>
     <div #newsRolante class="news__rolante">
         <app-noticias
-            photoCover="https://th.bing.com/th/id/OIP.nyTELxvGrYkIM-1mfbGvqQHaDe?rs=1&pid=ImgDetMain"
-            cardName="BLUE LOCK"
-            cardData="JUN,02/2025"
-            cardCategory="1"
-            cardDescription="Filme do Ano – Look Back levou o prêmio, competindo com Haikyuu!! The Dumpster Battle e SPY x FAMILY CODE: White"
+            *ngFor="let noticia of ultimasNoticias"
+            photoCover="noticia.imagemUrl"
+            cardName="noticia.titulo"
+            cardData="noticia.dataPublicacao"
+            cardCategory="noticia.categoria"
+            cardDescription="noticia.texto"
         ></app-noticias>
         <app-noticias
-            photoCover="https://th.bing.com/th/id/OIP.MI_OUzl8Oan0YCz4VxAqxQHaEK?w=290&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3"
-            cardName="HUNTER X HUNTER"
-            cardData="JUN,08/2025"
-            cardCategory="3"
-            cardDescription="A demo do jogo foi lançada recentemente, permitindo que os fãs experimentem o combate baseado no sistema Nen."
+            *ngFor="let noticia of ultimasNoticias"
+            photoCover="noticia.imagemUrl"
+            cardName="noticia.titulo"
+            cardData="noticia.dataPublicacao"
+            cardCategory="noticia.categoria"
+            cardDescription="noticia.texto"
         ></app-noticias>
         <app-noticias
-            photoCover="https://th.bing.com/th/id/OIP.aBkqsQ4dUmJzqlHD77WMmQHaEo?w=287&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3"
-            cardName="KAIJU NO. 8"
-            cardData="JUN,08/2025"
-            cardCategory="2"
-            cardDescription="O mangá está se aproximando do seu desfecho, com apenas dois capítulos restantes antes da conclusão."
+            *ngFor="let noticia of ultimasNoticias"
+            photoCover="noticia.imagemUrl"
+            cardName="noticia.titulo"
+            cardData="noticia.dataPublicacao"
+            cardCategory="noticia.categoria"
+            cardDescription="noticia.texto"
         ></app-noticias>
         <app-noticias
-            photoCover="https://th.bing.com/th/id/OIP.rA8t2teCkskvFeHkTZVlRgHaEK?w=321&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3"
-            cardName="STREET FIGHTER"
-            cardData="JUN,09/2025"
-            cardCategory="2"
-            cardDescription="A Capcom anunciou um novo mangá para comemorar o aniversário de Street Fighter 6, focado no personagem Luke Sullivan"
+            *ngFor="let noticia of ultimasNoticias"
+            photoCover="noticia.imagemUrl"
+            cardName="noticia.titulo"
+            cardData="noticia.dataPublicacao"
+            cardCategory="noticia.categoria"
+            cardDescription="noticia.texto"
         ></app-noticias>
         <app-noticias
-            photoCover="https://th.bing.com/th/id/OIP.DDlEERi6dG7HqWjBoLmCcwAAAA?rs=1&pid=ImgDetMain"
-            cardName="ONE PIECE"
-            cardData="JUN,07/2025"
-            cardCategory="2"
-            cardDescription="O capítulo mais recente revelou detalhes sobre a força de Imu e trouxe grandes reviravoltas na história."
+            *ngFor="let noticia of ultimasNoticias"
+            photoCover="noticia.imagemUrl"
+            cardName="noticia.titulo"
+            cardData="noticia.dataPublicacao"
+            cardCategory="noticia.categoria"
+            cardDescription="noticia.texto"
         ></app-noticias>
         <app-noticias
-            photoCover="https://i.pinimg.com/originals/be/35/b1/be35b12efdcb47e2c18d98f9e4cb5595.jpg"
-            cardName="DANDADAN"
-            cardData="JUN,02/2025"
-            cardCategory="1"
-            cardDescription="Melhor Música de Anime – Otonoke, de Creepy Nuts (Dandadan) Uma trilha sonora marcante que complementa perfeitamente a atmosfera do anime."
+            *ngFor="let noticia of ultimasNoticias"
+            photoCover="noticia.imagemUrl"
+            cardName="noticia.titulo"
+            cardData="noticia.dataPublicacao"
+            cardCategory="noticia.categoria"
+            cardDescription="noticia.texto"
         ></app-noticias>
         <app-noticias
-            photoCover="https://th.bing.com/th/id/OIP.m6ld39B05pazc26vk4xFzgHaEK?rs=1&pid=ImgDetMain"
-            cardName="KIMETSU NO YAIBA"
-            cardData="02 JUN 2025"
-            cardCategory="1"
-            cardDescription="Melhor Animação – Demon Slayer: Kimetsu no Yaiba – Hashira Training Arc Reconhecido pela qualidade visual impecável e fluidez das cenas de ação."
+            *ngFor="let noticia of ultimasNoticias"
+            photoCover="noticia.imagemUrl"
+            cardName="noticia.titulo"
+            cardData="noticia.dataPublicacao"
+            cardCategory="noticia.categoria"
+            cardDescription="noticia.texto"
         ></app-noticias>
         <app-noticias
-            photoCover="https://staticg.sportskeeda.com/editor/2024/01/b0f61-17050803861897-1920.jpg"
-            cardName="FRIEREN"
-            cardData="JUN,02/2025"
-            cardCategory="1"
-            cardDescription="Melhor Personagem Principal – Frieren (Frieren e a Jornada para o Além) Uma protagonista cativante que conduz uma jornada emocionante e reflexiva."
+            *ngFor="let noticia of ultimasNoticias"
+            photoCover="noticia.imagemUrl"
+            cardName="noticia.titulo"
+            cardData="noticia.dataPublicacao"
+            cardCategory="noticia.categoria"
+            cardDescription="noticia.texto"
         ></app-noticias>
         <app-noticias
-            photoCover="https://th.bing.com/th/id/OIP.qRuOoM_NvDbAPmJN98XknwHaDt?w=326&h=174&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3"
-            cardName="Jogos baseados em animes"
-            cardData="JUN,08/2025"
-            cardCategory="3"
-            cardDescription="Uma lista recente destacou os melhores jogos de luta inspirados em animes, incluindo Dragon Ball FighterZ, Naruto Ninja Storm e Jump Force"
+            *ngFor="let noticia of ultimasNoticias"
+            photoCover="noticia.imagemUrl"
+            cardName="noticia.titulo"
+            cardData="noticia.dataPublicacao"
+            cardCategory="noticia.categoria"
+            cardDescription="noticia.texto"
         ></app-noticias>
     </div>
     <button (click)="scrollRight()" class="buttom-prox">→</button>
 </div>
 
+
 <div class="card-big">
     <button (click)="scrollLeftBigCard()" class="buttom-ante-big">←</button>
     <div #bigCard class="big-news">
-
         <app-big-card
             photoCover ="https://static.animecorner.me/2023/09/1694329986-30086.jpg"
             bigTitle="Anunciado para PC e Xbox Series X|S, com modo cooperativo"
@@ -150,7 +201,6 @@ cardDescription="Solo Leveling foi o grande vencedor, superando Frieren e a Jorn
             cardName="JUMP FORCE"
             cardData="JUN,7/2025"
         ></app-big-card>
-        
     </div>
     <button (click)="scrollRightBigCard()" class="buttom-prox-big">→</button>
 
@@ -159,51 +209,22 @@ cardDescription="Solo Leveling foi o grande vencedor, superando Frieren e a Jorn
         <div class="news-one-vertical">
             <button (click)="scrollUp('newsFourt')" class="buttom-up">▲</button>
             <div class="title-one">
-                <h1 class="background">MANHWA</h1>
+            <h1 class="background">MANHWA</h1>
             </div>
             <div #newsFourt class="news-scroll">
-                <app-noticias-vertical
-                    photoNews="https://th.bing.com/th/id/OIP.iNZpi1RZKWKeGDjLV2OaBAHaEK?rs=1&pid=ImgDetMain"
-                    titleNews ="Fãs fazem abaixo assinado para cancelar o anime, por má adaptação"
-                    cardName="The Beginning After the End"
-                    cardData="JUN,2/2025"
-                ></app-noticias-vertical>
-                <app-noticias-vertical
-                    photoNews ="https://staticg.sportskeeda.com/editor/2023/03/e0622-16796638059063-1920.jpg"
-                    titleNews ="Segunda temporada teve menos sucesso que a primeira"
-                    cardName="Tower of God"
-                    cardData="JUN,2/2025"
-                ></app-noticias-vertical>
-                <app-noticias-vertical
-                    photoNews ="https://th.bing.com/th/id/OIP.ogay2X9loNYtslY0HrBiCgHaD5?rs=1&pid=ImgDetMain"
-                    titleNews ="altamente recomendado para fãs de histórias sombrias e intensas."
-                    cardName="Bastard"
-                    cardData="JUN,2/2025"
-                ></app-noticias-vertical>
-                <app-noticias-vertical
-                    photoNews ="https://th.bing.com/th/id/OIP.jZwRRGN0pMIf-BbzgK5mrAHaEK?pid=ImgDet&w=184&h=103&c=7&dpr=1,3"
-                    titleNews ="O retorno do cão de casa continua sendo um dos títulos mais populares no gênero"
-                    cardName="O Retorno do Cão de Caça dos Baskerville"
-                    cardData="JUN,2/2025"
-                ></app-noticias-vertical>
-                <app-noticias-vertical
-                    photoNews="https://th.bing.com/th/id/OIP.y3SPgtYHJSF1-YzrGdZAVQHaEK?rs=1&pid=ImgDetMain"
-                    titleNews="O capítulo 100 será lançado em 8 de março de 2025"
-                    cardName="Solo Farming in the Tower"
-                    cardData="MAI,6/2025"
-                ></app-noticias-vertical>
-                <app-noticias-vertical
-                    photoNews="https://th.bing.com/th/id/OIP.BRO8CcCgNn-TM32XUtIMvQHaEK?rs=1&pid=ImgDetMain"
-                    titleNews="O capitulo 162 veio cheio de possibilidades"
-                    cardName="O Filho Mais Novo dos Runcandel"
-                    cardData="JUN,2/2025"
-                ></app-noticias-vertical>
-                <app-noticias-vertical
-                    photoNews="https://th.bing.com/th/id/OIP.iotGs9VXsjZwm5e1sKLSkAHaEJ?rs=1&pid=ImgDetMain"
-                    titleNews="Considerado um dos melhores manhwas comtenporãneos"
-                    cardName="INFINITE MAGE"
-                    cardData="JUN,2/2025"
-                ></app-noticias-vertical>
+            <!-- Primeiro iteramos pelas subcategorias -->
+                <div *ngIf="noticiasPorCategoria['Manhwa']">
+                    <div *ngFor="let sub of objectKeys(noticiasPorCategoria['Manhwa'])">
+                        <!-- Agora iteramos pelas notícias dentro da subcategoria -->
+                        <app-noticias-vertical
+                        *ngFor="let noticia of noticiasPorCategoria['Manhwa'][sub]"
+                        [photoNews]="noticia.imagemUrl"
+                        [titleNews]="noticia.texto"
+                        [cardName]="noticia.titulo"
+                        [cardData]="noticia.dataPublicacao"
+                        ></app-noticias-vertical>
+                    </div>
+                </div>
             </div>
             <button (click)="scrollDown('newsFourt')" class="buttom-down">▼</button>
         </div>
@@ -211,180 +232,75 @@ cardDescription="Solo Leveling foi o grande vencedor, superando Frieren e a Jorn
 </div>
 
 <div class="news-vertical">
+    <!-- MANGA -->
     <div class="news-one">
-        
         <div class="title-one">
-            <h1 class="background">FRIEREN</h1>
+        <h1 class="background">MANGA</h1>
         </div>
         <button (click)="scrollUp('newsOne')" class="buttom-up">▲</button>
         <div #newsOne class="news-scroll">
-            <app-noticias-vertical
-                photoNews="https://staticg.sportskeeda.com/editor/2024/01/b0f61-17050803861897-1920.jpg"
-                titleNews ="Melhor Personagem Principal – Frieren"
-                cardName="FRIEREN"
-                cardData="JUN,2/2025"
-            ></app-noticias-vertical>
-            <app-noticias-vertical
-                photoNews ="https://staticg.sportskeeda.com/editor/2024/01/b0f61-17050803861897-1920.jpg"
-                titleNews ="Melhor Personagem Principal – Frieren"
-                cardName="FRIEREN"
-                cardData="JUN,2/2025"
-            ></app-noticias-vertical>
-            <app-noticias-vertical
-                photoNews ="https://staticg.sportskeeda.com/editor/2024/01/b0f61-17050803861897-1920.jpg"
-                titleNews ="Melhor Personagem Principal – Frieren"
-                cardName="FRIEREN"
-                cardData="JUN,2/2025"
-            ></app-noticias-vertical>
-            <app-noticias-vertical
-                photoNews ="https://staticg.sportskeeda.com/editor/2024/01/b0f61-17050803861897-1920.jpg"
-                titleNews ="Melhor Personagem Principal – Frieren"
-                cardName="FRIEREN"
-                cardData="JUN,2/2025"
-            ></app-noticias-vertical>
-            <app-noticias-vertical
-                photoNews="https://th.bing.com/th/id/OIP.m6ld39B05pazc26vk4xFzgHaEK?rs=1&pid=ImgDetMain"
-                titleNews="Melhor Animação – Demon Slayer: Kimetsu no Yaiba – Hashira Training Arc"
-                cardName="KIMETSU NO YAIBA"
-                cardData="JUN,2/2025"
-            ></app-noticias-vertical>
-            <app-noticias-vertical
-                photoNews="https://th.bing.com/th/id/OIP.m6ld39B05pazc26vk4xFzgHaEK?rs=1&pid=ImgDetMain"
-                titleNews="Melhor Animação – Demon Slayer: Kimetsu no Yaiba – Hashira Training Arc"
-                cardName="KIMETSU NO YAIBA"
-                cardData="JUN,2/2025"
-            ></app-noticias-vertical>
-            <app-noticias-vertical
-                photoNews="https://th.bing.com/th/id/OIP.m6ld39B05pazc26vk4xFzgHaEK?rs=1&pid=ImgDetMain"
-                titleNews="Melhor Animação – Demon Slayer: Kimetsu no Yaiba – Hashira Training Arc"
-                cardName="KIMETSU NO YAIBA"
-                cardData="JUN,2/2025"
-            ></app-noticias-vertical>
-            <app-noticias-vertical
-                photoNews="https://th.bing.com/th/id/OIP.m6ld39B05pazc26vk4xFzgHaEK?rs=1&pid=ImgDetMain"
-                titleNews="Melhor Animação – Demon Slayer: Kimetsu no Yaiba – Hashira Training Arc"
-                cardName="KIMETSU NO YAIBA"
-                cardData="JUN,2/2025"
-            ></app-noticias-vertical>
+            <div *ngIf="noticiasPorCategoria['Manga']">
+                <div *ngFor="let sub of objectKeys(noticiasPorCategoria['Manga'])">
+                    <app-noticias-vertical
+                    *ngFor="let noticia of noticiasPorCategoria['Manga'][sub]"
+                    [photoNews]="noticia.imagemUrl"
+                    [titleNews]="noticia.texto"
+                    [cardName]="noticia.titulo"
+                    [cardData]="noticia.dataPublicacao"
+                    ></app-noticias-vertical>
+                </div>
+            </div>
         </div>
         <button (click)="scrollDown('newsOne')" class="buttom-down">▼</button>
     </div>
 
+  <!-- GAMER -->
     <div class="news-two">
         <button (click)="scrollUp('newsTwo')" class="buttom-up">▲</button>
         <div class="title-two">
-            <h1 class="background">KIMETSU NO YAIBA</h1>
+        <h1 class="background">GAMER</h1>
         </div>
         <div #newsTwo class="news-scroll">
-            <app-noticias-vertical
-                photoNews="https://th.bing.com/th/id/OIP.m6ld39B05pazc26vk4xFzgHaEK?rs=1&pid=ImgDetMain"
-                titleNews="Melhor Animação – Demon Slayer: Kimetsu no Yaiba – Hashira Training Arc"
-                cardName="KIMETSU NO YAIBA"
-                cardData="JUN,2/2025"
-            ></app-noticias-vertical>
-            <app-noticias-vertical
-                photoNews="https://th.bing.com/th/id/OIP.m6ld39B05pazc26vk4xFzgHaEK?rs=1&pid=ImgDetMain"
-                titleNews="Melhor Animação – Demon Slayer: Kimetsu no Yaiba – Hashira Training Arc"
-                cardName="KIMETSU NO YAIBA"
-                cardData="JUN,2/2025"
-            ></app-noticias-vertical>
-            <app-noticias-vertical
-                photoNews="https://th.bing.com/th/id/OIP.m6ld39B05pazc26vk4xFzgHaEK?rs=1&pid=ImgDetMain"
-                titleNews="Melhor Animação – Demon Slayer: Kimetsu no Yaiba – Hashira Training Arc"
-                cardName="KIMETSU NO YAIBA"
-                cardData="JUN,2/2025"
-            ></app-noticias-vertical>
-            <app-noticias-vertical
-                photoNews="https://th.bing.com/th/id/OIP.m6ld39B05pazc26vk4xFzgHaEK?rs=1&pid=ImgDetMain"
-                titleNews="Melhor Animação – Demon Slayer: Kimetsu no Yaiba – Hashira Training Arc"
-                cardName="KIMETSU NO YAIBA"
-                cardData="JUN,2/2025"
-            ></app-noticias-vertical>
-            <app-noticias-vertical
-                photoNews="https://i.pinimg.com/originals/be/35/b1/be35b12efdcb47e2c18d98f9e4cb5595.jpg"
-                titleNews="Melhor Música de Anime – Otonoke, de Creepy Nuts (Dandadan)"
-                cardName="DANDADAN"
-                cardData="JUN,2/2025"
-            ></app-noticias-vertical>
-            <app-noticias-vertical
-                photoNews="https://i.pinimg.com/originals/be/35/b1/be35b12efdcb47e2c18d98f9e4cb5595.jpg"
-                titleNews="Melhor Música de Anime – Otonoke, de Creepy Nuts (Dandadan)"
-                cardName="DANDADAN"
-                cardData="JUN,2/2025"
-            ></app-noticias-vertical>
-            <app-noticias-vertical
-                photoNews="https://i.pinimg.com/originals/be/35/b1/be35b12efdcb47e2c18d98f9e4cb5595.jpg"
-                titleNews="Melhor Música de Anime – Otonoke, de Creepy Nuts (Dandadan)"
-                cardName="DANDADAN"
-                cardData="JUN,2/2025"
-            ></app-noticias-vertical>
-            <app-noticias-vertical
-                photoNews="https://i.pinimg.com/originals/be/35/b1/be35b12efdcb47e2c18d98f9e4cb5595.jpg"
-                titleNews="Melhor Música de Anime – Otonoke, de Creepy Nuts (Dandadan)"
-                cardName="DANDADAN"
-                cardData="JUN,2/2025"
-            ></app-noticias-vertical>
+            <div *ngIf="noticiasPorCategoria['Gamer']">
+                <div *ngFor="let sub of objectKeys(noticiasPorCategoria['Gamer'])">
+                    <app-noticias-vertical
+                    *ngFor="let noticia of noticiasPorCategoria['Gamer'][sub]"
+                    [photoNews]="noticia.imagemUrl"
+                    [titleNews]="noticia.texto"
+                    [cardName]="noticia.titulo"
+                    [cardData]="noticia.dataPublicacao"
+                    ></app-noticias-vertical>
+                </div>
+            </div>
         </div>
         <button (click)="scrollDown('newsTwo')" class="buttom-down">▼</button>
     </div>
+
+  <!-- ANIME -->
     <div class="news-tree">
         <button (click)="scrollUp('newsTree')" class="buttom-up">▲</button>
         <div class="title-tree">
-            <h1 class="background">DANDADAN</h1>
+        <h1 class="background">ANIME</h1>
         </div>
         <div #newsTree class="news-scroll">
-            <app-noticias-vertical
-                photoNews="https://i.pinimg.com/originals/be/35/b1/be35b12efdcb47e2c18d98f9e4cb5595.jpg"
-                titleNews="Melhor Música de Anime – Otonoke, de Creepy Nuts (Dandadan)"
-                cardName="DANDADAN"
-                cardData="JUN,2/2025"
-            ></app-noticias-vertical>
-            <app-noticias-vertical
-                photoNews="https://i.pinimg.com/originals/be/35/b1/be35b12efdcb47e2c18d98f9e4cb5595.jpg"
-                titleNews="Melhor Música de Anime – Otonoke, de Creepy Nuts (Dandadan)"
-                cardName="DANDADAN"
-                cardData="JUN,2/2025"
-            ></app-noticias-vertical>
-            <app-noticias-vertical
-                photoNews="https://i.pinimg.com/originals/be/35/b1/be35b12efdcb47e2c18d98f9e4cb5595.jpg"
-                titleNews="Melhor Música de Anime – Otonoke, de Creepy Nuts (Dandadan)"
-                cardName="DANDADAN"
-                cardData="JUN,2/2025"
-            ></app-noticias-vertical>
-            <app-noticias-vertical
-                photoNews="https://i.pinimg.com/originals/be/35/b1/be35b12efdcb47e2c18d98f9e4cb5595.jpg"
-                titleNews="Melhor Música de Anime – Otonoke, de Creepy Nuts (Dandadan)"
-                cardName="DANDADAN"
-                cardData="JUN,2/2025"
-            ></app-noticias-vertical>
-            <app-noticias-vertical
-                photoNews="https://th.bing.com/th/id/OIP.m6ld39B05pazc26vk4xFzgHaEK?rs=1&pid=ImgDetMain"
-                titleNews="Melhor Animação – Demon Slayer: Kimetsu no Yaiba – Hashira Training Arc"
-                cardName="KIMETSU NO YAIBA"
-                cardData="JUN,2/2025"
-            ></app-noticias-vertical>
-            <app-noticias-vertical
-                photoNews="https://th.bing.com/th/id/OIP.m6ld39B05pazc26vk4xFzgHaEK?rs=1&pid=ImgDetMain"
-                titleNews="Melhor Animação – Demon Slayer: Kimetsu no Yaiba – Hashira Training Arc"
-                cardName="KIMETSU NO YAIBA"
-                cardData="JUN,2/2025"
-            ></app-noticias-vertical>
-            <app-noticias-vertical
-                photoNews="https://th.bing.com/th/id/OIP.m6ld39B05pazc26vk4xFzgHaEK?rs=1&pid=ImgDetMain"
-                titleNews="Melhor Animação – Demon Slayer: Kimetsu no Yaiba – Hashira Training Arc"
-                cardName="KIMETSU NO YAIBA"
-                cardData="JUN,2/2025"
-            ></app-noticias-vertical>
-            <app-noticias-vertical
-                photoNews="https://th.bing.com/th/id/OIP.m6ld39B05pazc26vk4xFzgHaEK?rs=1&pid=ImgDetMain"
-                titleNews="Melhor Animação – Demon Slayer: Kimetsu no Yaiba – Hashira Training Arc"
-                cardName="KIMETSU NO YAIBA"
-                cardData="JUN,2/2025"
-            ></app-noticias-vertical>
+            <div *ngIf="noticiasPorCategoria['Anime']">
+                <div *ngFor="let sub of objectKeys(noticiasPorCategoria['Anime'])">
+                    <app-noticias-vertical
+                    *ngFor="let noticia of noticiasPorCategoria['Anime'][sub]"
+                    [photoNews]="noticia.imagemUrl"
+                    [titleNews]="noticia.titulo"
+                    [cardName]="noticia.subcategoria"
+                    [cardData]="noticia.dataPublicacao"
+                    ></app-noticias-vertical>
+                </div>
+            </div>
         </div>
         <button (click)="scrollDown('newsTree')" class="buttom-down">▼</button>
     </div>
 </div>
+
+<div style="clear: both; width: 100%;"></div>
+
 <footer class="footer">
     <div class="footer-content">
 

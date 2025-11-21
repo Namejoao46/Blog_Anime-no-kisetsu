@@ -1,21 +1,23 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
-export interface Noticia{
-  titulo: string;
-  texto: string;
-  categoria?: string;
-  subcategoria?: string;
-}
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Noticia } from '../models/noticia.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class NoticiaService {
   private apiUrl = 'http://localhost:8080/noticias';
+
   constructor(private http: HttpClient) {}
 
-  criarNoticia(noticia: Noticia){
+  listarNoticias(): Observable<Noticia[]> {
+    return this.http.get<Noticia[]>(this.apiUrl);
+  }
+
+  criarNoticia(noticia: Noticia): Observable<Noticia> {
     return this.http.post<Noticia>(this.apiUrl, noticia);
   }
 }
+
+export type { Noticia };

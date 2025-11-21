@@ -7,6 +7,58 @@
     margin-bottom: 15px; /* Adiciona espaço abaixo da barra */
 }
 
+.menu-title-wrapper {
+    position: relative;
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.menu-title-rolante {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    width: 100%;
+    gap: 30px;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+.menu-title-rolante::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Edge */
+}
+
+app-menu-title {
+    margin-right: 40px;
+    flex-shrink: 0;
+    border-radius: 50px;
+}
+
+.scroll-btn {
+    all: unset;
+    font-size: 40px;
+    font-weight: bold;
+    color: #00ffff;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 2;
+    transition: transform 0.2s ease;
+}
+
+.scroll-btn:hover {
+    transform: scale(1.2);
+}
+
+.scroll-btn.left {
+    position: absolute;
+    left: -10px;
+}
+
+.scroll-btn.right {
+    position: absolute;
+    right: -10px;
+}
+
 /* ==== Estilização do título "NEWS ANIME AWARDS" ==== */
 .titulo-news {
     font-size: 20px;
@@ -171,6 +223,8 @@
     justify-content: flex-start;
     align-items: center;
     width: 100%;
+    max-width: 828px;
+    border: 2px solid greenyellow;
 }
 /* ==== ESTILIZAÇÃO DOS BOTÕES DE NAVEGAÇÃO DO BIG CARD ==== */
 .buttom-ante-big, .buttom-prox-big {

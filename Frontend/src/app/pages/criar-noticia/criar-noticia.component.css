@@ -1,0 +1,93 @@
+.form-conteiner{
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, .6);
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .3);
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.form-conteiner h2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    background: rgba(0, 0, 0, .7);
+    width: 560px;
+    height: 50px;
+    margin-bottom: 20px;
+    color: #00ffff;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+label{
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #ddd;
+}
+
+input[type="text"],
+textarea,
+select {
+    padding: 10px;
+    border: 1px solid #444;
+    border-radius: 6px;
+    background: #2c2c3c;
+    color: #fff;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+textarea:focus,
+select:focus {
+  border-color: #00ffff;
+  outline: none;
+}
+
+textarea{
+    min-height: 100px;
+    resize: vertical;
+}
+
+button {
+    padding: 12px;
+    background: #00ffff;
+    border: none;
+    border-radius: 6px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button:disabled {
+  background: #888;
+  cursor: not-allowed;
+}
+
+button:hover:not(:disabled) {
+  background: #00ffff;
+}
+
+.sucesso{
+    margin-top: 15px;
+    color: #4caf50;
+    font-weight: bold;
+    text-align: center;
+}
+
+.erro{
+    margin-top: 15px;
+    color: #f44336;
+    font-weight: bold;
+    text-align: center;
+}

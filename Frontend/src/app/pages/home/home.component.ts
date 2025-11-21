@@ -7,6 +7,7 @@ import { BigCardComponent } from "../../components/big-card/big-card.component";
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { Noticia, NoticiaService } from '../../services/noticia.service';
 
 
 @Component({
@@ -17,6 +18,7 @@ import { RouterModule } from '@angular/router';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements AfterViewInit { // Adiciona AfterViewInit para executar código após a exibição do componente
+  @ViewChild('menuTitleRolante') menuTitleRolante!: ElementRef;
   @ViewChild('newsRolante', { static: false }) newsRolante!: ElementRef;
   @ViewChild('newsOne', { static: false }) newsOne!: ElementRef;
   @ViewChild('newsTwo', { static: false }) newsTwo!: ElementRef;
@@ -24,6 +26,9 @@ export class HomeComponent implements AfterViewInit { // Adiciona AfterViewInit 
   @ViewChild('newsFourt', { static: false }) newsFourt!: ElementRef;
   @ViewChild('bigCard', { static: false }) bigCard!: ElementRef;
    // Obtém uma referência ao contêiner das notícias 
+
+  scrollStepMenuTitle = 1553; // largura total de um card
+  scrollAmountMenuTitle = 0;
 
   scrollAmount = 0; // Variável para controlar a posição atual da rolagem
   scrollStep = 0; // Definido dinamicamente pelo tamanho de um card, evitando saltos múltiplos na rolagem
@@ -35,11 +40,69 @@ export class HomeComponent implements AfterViewInit { // Adiciona AfterViewInit 
   scrollAmountBigCard = 0;
   scrollStepBigCard = 0;
 
+  noticias: Noticia[] = [];
+  bigCards: Noticia[] = [];
+  ultimasNoticias: Noticia[] = [];
+  noticiasPorCategoria: { [key: string]: { [key: string]: Noticia[] } } = {
+    Anime: {},
+    Manga: {},
+    Gamer: {},
+    Manhwa: {}
+  };
+
+  categorias: string[] = ['Anime', 'Manga', 'Gamer', 'Manhwa'];
+
+  constructor(private noticiaService: NoticiaService) {}
+
+  ngOnInit(): void {
+    this.noticiaService.listarNoticias().subscribe(res => {
+      this.noticias = res;
+      console.log('Notícias recebidas:', this.noticias); // 👈 ADICIONE AQUI
+      this.organizarNoticias();
+    });
+  }
+
+  organizarNoticias(): void {
+    // Pega uma notícia de cada categoria para os bigCards
+    this.bigCards = this.categorias.flatMap(cat => {
+      const noticia = this.noticias.find(n => n.categoria === cat);
+      return noticia ? [noticia] : [];
+    });
+
+    // Últimas 12 notícias
+    this.ultimasNoticias = this.noticias.slice(0, 12);
+
+    // Notícias agrupadas por categoria e subcategoria
+    this.categorias.forEach(cat => {
+      this.noticiasPorCategoria[cat] = {};
+
+      this.noticias
+        .filter(n => n.categoria === cat)
+        .forEach(n => {
+          const sub = n.subcategoria || 'Geral'; // garante valor
+          if (!this.noticiasPorCategoria[cat][sub]) {
+            this.noticiasPorCategoria[cat][sub] = [];
+          }
+          this.noticiasPorCategoria[cat][sub].push(n);
+        });
+    });
+  }
+
   /* ==== Método executado após a inicialização do componente ==== */
   ngAfterViewInit(): void { 
     this.definirScrollStep(); // Chama o método para definir dinamicamente o tamanho de um card
     this.definirScrollStepVertical();
     this.definirScrollStepBigCard();
+    this.definirScrollStepMenuTitle();
+  }
+
+  definirScrollStepMenuTitle(): void {
+    const primeiroCard = this.menuTitleRolante.nativeElement.querySelector("app-menu-title");
+    if (primeiroCard) {
+      const style = window.getComputedStyle(primeiroCard);
+      const marginRight = parseInt(style.marginRight || '0', 10);
+      this.scrollStepMenuTitle = primeiroCard.clientWidth + marginRight;
+    }
   }
 
   /* ==== Método para definir dinamicamente o tamanho do scrollStep ==== */
@@ -101,6 +164,22 @@ export class HomeComponent implements AfterViewInit { // Adiciona AfterViewInit 
     this[newsId].nativeElement.scrollTo({ top: this.scrollAmountVertical[newsId], behavior: 'smooth' }); // Move o scroll suavemente para a esquerda
   }
 
+  scrollRightMenuTitle(): void {
+    this.scrollAmountMenuTitle += this.scrollStepMenuTitle;
+    this.menuTitleRolante.nativeElement.scrollTo({
+      left: this.scrollAmountMenuTitle,
+      behavior: 'smooth'
+    });
+  }
+
+  scrollLeftMenuTitle(): void {
+    this.scrollAmountMenuTitle -= this.scrollStepMenuTitle;
+    this.menuTitleRolante.nativeElement.scrollTo({
+      left: this.scrollAmountMenuTitle,
+      behavior: 'smooth'
+    });
+  }
+
   /* ==== Método para filtrar notícias por categoria ==== */
   filtrarNoticias(categoria: string): void {
     const cards = document.querySelectorAll("app-noticias"); // Obtém todos os cards de notícias no DOM
@@ -116,4 +195,9 @@ export class HomeComponent implements AfterViewInit { // Adiciona AfterViewInit 
       }
     });
   }
+
+  objectKeys(obj: any): string[] {
+    return obj ? Object.keys(obj) : [];
+  }
+
 }

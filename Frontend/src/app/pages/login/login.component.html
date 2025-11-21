@@ -2,7 +2,7 @@
   <div class="container-login" [ngClass]="{ 'active': !showLogin }" >
     <div class="form-box login">
       <form (ngSubmit)="onLogin()">
-        <h1>Login</h1>
+        <h1>Entrar</h1>
             <div class="input-box">
               <input [(ngModel)]="username" name="username" placeholder="Usuário" />
               <i><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAABjElEQVR4AeyWTStEURjHJyHlA9iIUmKFUOxkJ0r5BhQWFhYsfAVJyULKB7BUsrCxUkKUlw0KKQsp2css5vfUNM2597w8595pVjP9f+fMuc/L/3Zm5p5pKtT51TC0bbjsSieBXuiCFlBLitXJJA7AIkzDJEzBAoyCSjGGY3QcB5uGuTgBQWkNZesGA936iAtMbmkNg43KFv3l2TlpDTucHcxAME9raLbNsdIa/io9gnlawzel4WsoT2v4QqN38OmL4D14pTWUJmcMz2CT3MypLZC8FmMotecMR3ANj3ADxyA3U2QOKtZQGv4wPMAV3ME3qBVr2EpnF4TC0hjK02OTVh/w5+GT2C6MgFMhw20qn2ADusEnObJWSbiFA2iDlHyGe2SvQxYtUXQIKbkM5ShaSWXHXZgjfRYMuQzlkDUSMy6Wk3Uuw/lkYsb1DHXtUJHNsIdoM9RKQ9WNbIbymDqpTsrx/pLaC6jIZihB+bDlSyM/h6ys0Sj1P8dlSG5hn2ErBzvU/oMhn6GRWKtFCQAA///B4FspAAAABklEQVQDAGrxQjnLtcBhAAAAAElFTkSuQmCC" alt=""></i>
@@ -12,11 +12,11 @@
               <i><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAABWUlEQVR4AeyVu0oDQRSG1xtiISg2voCFF0QRL1iI7yAWPo+NrY0I2qngpbO0URARJU2KkNRpAgmEFCmSkNt3iiwsMzm7k11Cig3/R2bnnDk/c/Yy096Yf6nhsIZvEDiFHXCSa0v3qf4Bv3AFn/AFJxBJLoZrVHyHV1iCI1iGO3iDTQiVi+Ej1a7hHnow0BODS3iAUEU13KPSAdyCTbJLuZ+SY4v7c1ENV1lRhRrY1GSyAOugKqqh5LXVSp7XIj4PqqSQmpB0cOIMt9jhGcg9vOH/QkFejRni57ALVmk73GbFMazAFJRgUaFCrAPybsoH4pCxIc0w9IkzqgUn5PMXnOFKM1wgHkdzLJ6FgDTDQGJSF6lhUp3066Qt9VuR1EBraTmmiRxnxgmjGWYwbMAo6rLoHwxphrLDF1Z8w58DP+Q+QxEMaYaSLCd5nkHWgRy5dbAqzNC6KM5kHwAA//+UKJuqAAAABklEQVQDANWlPjlmmy47AAAAAElFTkSuQmCC" alt=""></i>
             </div>
             <div class="forgot-link">
-              <a href="#">Forgot password?</a>
+              <a href="#">Esqueceu a senha?</a>
             </div>
 
               <button type="submit" class="btn">Entrar</button>
-              <p>or login with social platforms</p>
+              <p>Siga nós em uma de nossas plataformas.</p>
             <div class="social-icons">
                 <a href="mailto:paulo.joao.avs@gmail.com">
                   <i><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAACa0lEQVR4AeyWyUtWURjGv4rmadGilhENRIsiCIqgAaJFFNSuP6CBggqKWhRRVIsmopEGCNqG4E5FXKgIIg6IG0Vd6EIUQVQUJ8Th9/B93/Xc13P87qfiSnl+5z3nPeeeR++5972uTa3wz6qh74avJ7kfTsFeWAeJlfSW7mbH99AAE9AO1dABI1AG92EbLKhchpp/zg6d8BiOwxpwtZHBBfgC3XALgtKGocldTJTDK9gESbSdRb/hOngVMtS5FHLFGchXP7ngP3gVMnzDap9ZK/k7cAI2wGa4BzpPQuojzV2YAa98hgdZ+QisfpE4Bor1xEkYh+9wGi6BzpkQls/wKcv16BMi/aOnv0wGdL0q8WZN0hrqCbxq1vQwfgDLImt4mF13givdwiE3kemfI75MwDXWRLKGe6KZuU7dXDfWk+ELMrlQQWBZWtZwRzoda/VkxhJ5DmJ3zBoOeDY74MkppfNWzMWgu8Aa9rqTmf7RTLRBdbSSpCVmwLweOkJa1lBFuT89FbW36W0FK70qOkcXvYsqCO5avbPR2BpOMaOSRoi0j95nSKKHLNoCrgrcgTXU3CeaaXB1g8EfCBVxnecT5l+Dq2IGXRDJZ9jC7AewukmiCVQrVUtlrg/wRXKqpe+IVnpPYzmfoRY8o6kBK9XZHyRrYQz04JQST4LVWxLz3uGQoc7yChc0wmL0l4tUkwlxhQy1qo/mLBRBUo2yUHVXZ+79RC1kyLWpYZrLcAS+ga8wkE610chIpfEr/aByGWYvbKajmqh/pvRhPs84i/7POcRYRvoF6YaV1DC7gz66VQwqHPI653wN8VmaZgEAAP//6W3DIAAAAAZJREFUAwC3ZWg5ivp9IQAAAABJRU5ErkJggg==" alt="">
@@ -36,7 +36,7 @@
 
     <div class="form-box register">
       <form (ngSubmit)="onRegister()">
-      <h1>Register</h1>
+      <h1>Cadastre-se</h1>
           <div class="input-box">
             <input [(ngModel)]="username" name="username" placeholder="Usuário" />
             <i>
@@ -47,7 +47,7 @@
             <input [(ngModel)]="password" name="password" type="password" placeholder="Senha" />
             <i><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAABWUlEQVR4AeyVu0oDQRSG1xtiISg2voCFF0QRL1iI7yAWPo+NrY0I2qngpbO0URARJU2KkNRpAgmEFCmSkNt3iiwsMzm7k11Cig3/R2bnnDk/c/Yy096Yf6nhsIZvEDiFHXCSa0v3qf4Bv3AFn/AFJxBJLoZrVHyHV1iCI1iGO3iDTQiVi+Ej1a7hHnow0BODS3iAUEU13KPSAdyCTbJLuZ+SY4v7c1ENV1lRhRrY1GSyAOugKqqh5LXVSp7XIj4PqqSQmpB0cOIMt9jhGcg9vOH/QkFejRni57ALVmk73GbFMazAFJRgUaFCrAPybsoH4pCxIc0w9IkzqgUn5PMXnOFKM1wgHkdzLJ6FgDTDQGJSF6lhUp3066Qt9VuR1EBraTmmiRxnxgmjGWYwbMAo6rLoHwxphrLDF1Z8w58DP+Q+QxEMaYaSLCd5nkHWgRy5dbAqzNC6KM5kHwAA//+UKJuqAAAABklEQVQDANWlPjlmmy47AAAAAElFTkSuQmCC" alt=""></i>
           </div>
-            <button type="submit" class="btn">Register</button>
+            <button type="submit" class="btn">Cadastro</button>
             <p>Fala ai, se curtiu, siga-nos.</p>
           <div class="social-icons">
               <a href="#">

@@ -1,5 +1,7 @@
 package blog.anime.blog.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,14 +14,17 @@ public class NoticiaService {
     @Autowired
     private NoticiaRepository noticiaRepository;
 
-    @Autowired
-    private ClassificacaoService classificacaoService;
-
-    public Noticia salvarNoticia(Noticia noticia){
-        String categoria = classificacaoService.detectarCategoria(noticia.getTexto());
-        String subcategoria = classificacaoService.detectarSubcategoria(noticia.getTexto(), categoria);
-        noticia.setCategoria(categoria);
-        noticia.setSubcategoria(subcategoria);
+    public Noticia salvarNoticia(Noticia noticia) {
+        if (noticia.getCategoria() == null || noticia.getCategoria().isBlank()) {
+            noticia.setCategoria("Outros");
+        }
+        if (noticia.getSubcategoria() == null || noticia.getSubcategoria().isBlank()) {
+            noticia.setSubcategoria("Geral");
+        }
         return noticiaRepository.save(noticia);
     }
+    
+    public List<Noticia> listarTodas() {
+        return noticiaRepository.findAll();
+    }  
 }

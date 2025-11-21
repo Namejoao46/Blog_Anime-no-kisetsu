@@ -3,6 +3,7 @@ package blog.anime.blog.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.lang.NonNull;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,12 +23,12 @@ public class PostController {
     private PostService service;
 
     @GetMapping
-    public List<Post> listar() {
+    public @NonNull List<Post> listar() {
         return service.listar();
     }
 
     @PostMapping
-    public Post salvar(@RequestBody Post post) {
+    public @NonNull Post salvar(@RequestBody @NonNull Post post) {
         return service.salvar(post);
     }
 }

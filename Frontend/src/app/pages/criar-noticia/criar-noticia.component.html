@@ -1,10 +1,35 @@
-<form (ngSubmit)="onCriar()">
-    <input [(ngModel)]="titulo" name="titulo" placeholder="Título" required />
-    <textarea [(ngModel)]="texto" name="texto" placeholder="Conteúdo" required></textarea>
-    <button type="submit">Crir Noticia</button>
-</form>
-<div *ngIf="resultado">
-    <h3>Classificação:</h3>
-    <p><strong>Categoria:</strong> {{ resultado.categoria }}</p>
-    <p><strong>Subcategoria:</strong> {{ resultado.subcategoria }}</p>
+
+<div class="form-conteiner">
+    <h2>Cadastrar Nova Notícia</h2>
+
+    <form [formGroup]="noticiaForm" (ngSubmit)="salvarNoticia()">
+        <label>Título:</label>
+        <input type="text" formControlName="titulo">
+
+        <label>Texto:</label>
+        <textarea formControlName="texto" maxlength="65000"></textarea>
+        <p>{{ noticiaForm.value.texto?.length || 0 }}/65000 caracteres</p>
+
+        <label>Imagem URL:</label>
+        <input type="text" formControlName="imagemUrl">
+
+        <label>Categoria:</label>
+        <select formControlName="categoria">
+            <option value="Anime">Anime</option>
+            <option value="Manga">Manga</option>
+            <option value="Gamer">Gamer</option>
+            <option value="Manhwa">Manhwa</option>
+        </select>
+
+        <label>Subcategoria:</label>
+        <input type="text" formControlName="subcategoria">
+
+        <label>Data de Publicação:</label>
+        <input type="date" formControlName="dataPublicacao">
+
+        <button type="submit" [disabled]="!noticiaForm.valid">Salvar</button>
+    </form>
+
+    <p class="sucesso" *ngIf="mensagemSucesso"> {{ mensagemSucesso }} </p>
+    <p class="errp" *ngIf="mensagemErro"> {{ mensagemErro }} </p>
 </div>

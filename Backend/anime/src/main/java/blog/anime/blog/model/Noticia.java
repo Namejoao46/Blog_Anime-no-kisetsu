@@ -1,9 +1,16 @@
 package blog.anime.blog.model;
 
+import java.time.LocalDate;
+
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Lob;
+
 
 @Entity
 public class Noticia {
@@ -11,10 +18,19 @@ public class Noticia {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private long id;
 
+    @NotBlank(message = "O título é obrigatório")
     private String titulo;
+
+    @NotBlank(message = "O texto é obrigatório")
+    @Lob
+    @Column(columnDefinition = "TEXT")
     private String texto;
+    private String imagemUrl;
     private String categoria;
     private String subcategoria;
+
+    @NotNull(message = "A data de publicação é obrigatória")
+    private LocalDate dataPublicacao;
 
     public long getId() {
         return id;
@@ -55,4 +71,22 @@ public class Noticia {
     public void setSubcategoria(String subcategoria) {
         this.subcategoria = subcategoria;
     }
+
+
+    public String getImagemUrl() {
+        return imagemUrl;
+    }
+
+    public void setImagemUrl(String imagemUrl) {
+        this.imagemUrl = imagemUrl;
+    }
+
+    public LocalDate getDataPublicacao() {
+        return dataPublicacao;
+    }
+
+    public void setDataPublicacao(LocalDate dataPublicacao) {
+        this.dataPublicacao = dataPublicacao;
+    }
+
 }

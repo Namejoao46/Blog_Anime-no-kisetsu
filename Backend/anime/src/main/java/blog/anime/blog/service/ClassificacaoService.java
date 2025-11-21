@@ -15,6 +15,9 @@ public class ClassificacaoService {
     );
 
     public String detectarCategoria(String texto) {
+        if (texto == null || texto.isBlank()){
+            return "Outros";
+        }
         texto = texto.toLowerCase();
         for(String categoria : subcategorias.keySet()) {
             for (String termo : subcategorias.get(categoria)) {
@@ -25,6 +28,9 @@ public class ClassificacaoService {
     }
 
     public String detectarSubcategoria(String texto, String categoria) {
+        if (texto == null || texto.isBlank()){
+            return "Geral";
+        }
         texto = texto.toLowerCase();
         for (String termo : subcategorias.getOrDefault(categoria, List.of())) {
             if (texto.contains(termo))return termo;

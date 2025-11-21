@@ -1,30 +1,49 @@
 import { Component } from '@angular/core';
 import { Noticia, NoticiaService } from '../../services/noticia.service';
-import { FormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-criar-noticia',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, ReactiveFormsModule],
   templateUrl: './criar-noticia.component.html',
-  styleUrl: './criar-noticia.component.css'
+  styleUrls: ['./criar-noticia.component.css']
 })
 export class CriarNoticiaComponent {
-  titulo = '';
-  texto = '';
-  resultado: Noticia | null = null;
+  noticiaForm: FormGroup;
+  mensagemSucesso: string = '';
+  mensagemErro: string = '';
 
-  constructor(private noticiaService: NoticiaService) {}
-
-  onCriar(){
-    const noticia: Noticia = { titulo: this.titulo, texto: this.texto };
-    this.noticiaService.criarNoticia(noticia).subscribe({
-      next: res => {
-        this.resultado = res;
-        alert(`Notícia criada! Categoria: ${res.categoria}, Subcategoria: ${res.subcategoria}`);
-      },
-      error: err => alert('Erro ao criar noticia: ' + err.message)
+  constructor(private fb: FormBuilder, private noticiaService: NoticiaService) {this.noticiaForm = this.fb.group({
+    titulo: ['', Validators.required],
+    texto: ['', [Validators.required, Validators.maxLength(65000)]],
+    imagemUrl: ['', Validators.required],
+    categoria: ['', Validators.required],
+    subcategoria: ['', Validators.required],
+    dataPublicacao: ['', Validators.required]
     });
+  }
+
+  salvarNoticia(): void {
+    if (this.noticiaForm.valid) {
+      const noticia: Noticia = {
+        ...this.noticiaForm.value,
+        dataPublicacao: this.noticiaForm.value.dataPublicacao instanceof Date
+          ? this.noticiaForm.value.dataPublicacao.toISOString().split('T')[0]
+          : this.noticiaForm.value.dataPublicacao
+      };
+
+      this.noticiaService.criarNoticia(noticia).subscribe({
+        next: (res) => {
+          this.mensagemSucesso = 'Notícia cadastrada com sucesso!';
+          this.noticiaForm.reset();
+        },
+        error: (err) => {
+          this.mensagemErro = 'Erro ao cadastrar notícia.';
+          console.error(err);
+        }
+      });
+    }
   }
 }
