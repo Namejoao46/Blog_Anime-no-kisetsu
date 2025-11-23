@@ -18,6 +18,9 @@ export class NoticiaService {
   criarNoticia(noticia: Noticia): Observable<Noticia> {
     return this.http.post<Noticia>(this.apiUrl, noticia);
   }
+  buscarPorCategoria(categoria: string, subcategoria: string): Observable<Noticia[]> {
+    return this.http.get<Noticia[]>(`${this.apiUrl}?categoria=${categoria}&subcategoria=${subcategoria}`);
+  }
 }
 
 export type { Noticia };

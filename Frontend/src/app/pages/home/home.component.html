@@ -216,13 +216,17 @@
                 <div *ngIf="noticiasPorCategoria['Manhwa']">
                     <div *ngFor="let sub of objectKeys(noticiasPorCategoria['Manhwa'])">
                         <!-- Agora iteramos pelas notícias dentro da subcategoria -->
-                        <app-noticias-vertical
-                        *ngFor="let noticia of noticiasPorCategoria['Manhwa'][sub]"
-                        [photoNews]="noticia.imagemUrl"
-                        [titleNews]="noticia.texto"
-                        [cardName]="noticia.titulo"
-                        [cardData]="noticia.dataPublicacao"
-                        ></app-noticias-vertical>
+                        <div *ngFor="let noticia of noticiasPorCategoria['Manhwa'][sub]">
+                            <a [routerLink]="['/noticia', noticia.categoria, noticia.subcategoria]">
+                                <app-noticias-vertical
+                                
+                                [photoNews]="noticia.imagemUrl"
+                                [titleNews]="noticia.texto"
+                                [cardName]="noticia.titulo"
+                                [cardData]="noticia.dataPublicacao"
+                                ></app-noticias-vertical>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -241,13 +245,16 @@
         <div #newsOne class="news-scroll">
             <div *ngIf="noticiasPorCategoria['Manga']">
                 <div *ngFor="let sub of objectKeys(noticiasPorCategoria['Manga'])">
-                    <app-noticias-vertical
-                    *ngFor="let noticia of noticiasPorCategoria['Manga'][sub]"
-                    [photoNews]="noticia.imagemUrl"
-                    [titleNews]="noticia.texto"
-                    [cardName]="noticia.titulo"
-                    [cardData]="noticia.dataPublicacao"
-                    ></app-noticias-vertical>
+                    <div *ngFor="let noticia of noticiasPorCategoria['Manga'][sub]">
+                        <a [routerLink]="['/noticia', noticia.categoria, noticia.subcategoria]">
+                            <app-noticias-vertical
+                                [photoNews]="noticia.imagemUrl"
+                                [titleNews]="noticia.texto"
+                                [cardName]="noticia.titulo"
+                                [cardData]="noticia.dataPublicacao"
+                            ></app-noticias-vertical>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -263,13 +270,16 @@
         <div #newsTwo class="news-scroll">
             <div *ngIf="noticiasPorCategoria['Gamer']">
                 <div *ngFor="let sub of objectKeys(noticiasPorCategoria['Gamer'])">
-                    <app-noticias-vertical
-                    *ngFor="let noticia of noticiasPorCategoria['Gamer'][sub]"
-                    [photoNews]="noticia.imagemUrl"
-                    [titleNews]="noticia.texto"
-                    [cardName]="noticia.titulo"
-                    [cardData]="noticia.dataPublicacao"
-                    ></app-noticias-vertical>
+                    <div *ngFor="let noticia of noticiasPorCategoria['Gamer'][sub]">
+                        <a [routerLink]="['/noticia', noticia.categoria, noticia.subcategoria]">
+                            <app-noticias-vertical
+                                [photoNews]="noticia.imagemUrl"
+                                [titleNews]="noticia.texto"
+                                [cardName]="noticia.titulo"
+                                [cardData]="noticia.dataPublicacao"
+                            ></app-noticias-vertical>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -285,13 +295,16 @@
         <div #newsTree class="news-scroll">
             <div *ngIf="noticiasPorCategoria['Anime']">
                 <div *ngFor="let sub of objectKeys(noticiasPorCategoria['Anime'])">
-                    <app-noticias-vertical
-                    *ngFor="let noticia of noticiasPorCategoria['Anime'][sub]"
-                    [photoNews]="noticia.imagemUrl"
-                    [titleNews]="noticia.titulo"
-                    [cardName]="noticia.subcategoria"
-                    [cardData]="noticia.dataPublicacao"
-                    ></app-noticias-vertical>
+                    <div *ngFor="let noticia of noticiasPorCategoria['Anime'][sub]">
+                        <a [routerLink]="['/noticia', noticia.categoria, noticia.subcategoria]">
+                            <app-noticias-vertical     
+                                [photoNews]="noticia.imagemUrl"
+                                [titleNews]="noticia.titulo"
+                                [cardName]="noticia.subcategoria"
+                                [cardData]="noticia.dataPublicacao"
+                            ></app-noticias-vertical>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
