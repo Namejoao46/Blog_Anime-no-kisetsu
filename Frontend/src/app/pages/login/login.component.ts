@@ -3,11 +3,12 @@ import { AuthService } from '../../services/auth.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
+import { RodapeComponent } from "../../components/rodape/rodape.component";
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterModule],
+  imports: [CommonModule, FormsModule, RouterModule, RodapeComponent],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })

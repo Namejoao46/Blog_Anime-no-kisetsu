@@ -1,85 +1,122 @@
-/* ==== Configuração do contêiner principal do menu ==== */
-.menu-container{
-    width: 100%;
-    height: 15px;
-    display: flex;
+.menu-header {
+    display: grid;
+    grid-template-columns: 350px 1fr auto;
     align-items: center;
-    padding: 0px 20px;
+    background-color: #0f1316;
+    padding: 0 90px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 70px;
+    z-index: 20;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    gap: 90px;
 }
 
-/* ==== Ajuste da posição dos itens do menu ==== */
-.menu-itens{
-    margin-top: 25px;
-    transition: transform 0.3s ease; /* Adiciona animação suave */
+.logo {
+ display: flex;
 }
 
-/* Remove estilos padrão de botões */
-button{
-    all: unset;
-}
-
-/* ==== Estilos dos botões do menu ==== */
-.menu-itens button{
-    background: none;
-    border: none;
-    font-size: 18px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: transform 0.3s ease; /* Adiciona animação de transição */
-}
-
-/* Efeito ao passar o mouse sobre os botões */
-.menu-itens button:hover{
-    text-decoration: underline;
-    background-color: #f90; /* Altera a cor de fundo ao passar o mouse */
-    transform: scale(1.1); /* Aumenta ligeiramente o tamanho ao passar o mouse */
-    z-index: 10; /* Garante que fique acima de outros elementos */
-}
-
-/* ==== Estilização dos links do menu ==== */
-.menu-itens a{ 
-    text-decoration: none !important; 
-    background: none !important; 
-    color: white !important; 
-} 
-
-/* ==== Estilização e posicionamento da logo ==== */
 .logo img {
-    height: 80px;
-    margin-top: 50px;
-    align-self: center;
-    transition: transform 0.3s ease; /* Adiciona transição suave */
+    height: 60px;
+    display: block;
+    margin: 0;
+    transition: transform 0.3s ease;
 }
 
-/* Efeito ao passar o mouse sobre a logo */
 .logo img:hover {
-    transform: scale(1.1); /* Aumenta ligeiramente o tamanho ao passar o mouse */
+    transform: scale(1.1);
 }
 
-/* ==== Configuração dos ícones ==== */
-.Icones ul li {
-    margin-right: 15px;
-    transition: transform 0.3s ease; /* Adiciona animação suave */
+.menu-bar-itens {
+  display: flex;
+  gap: 30px;
+}
+.menu-bar-itens button {
+  font-size: 18px;
+  font-weight: bold;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: white;
+}
+.menu-bar-itens button:hover {
+  text-decoration: underline;
+  transform: scale(1.1);
 }
 
-/* Efeito ao passar o mouse sobre os ícones */
-.Icones ul li:hover {
-    transform: scale(1.2); /* Aumenta o tamanho do ícone */
-    z-index: 10; /* Garante que ele fique acima dos outros elementos */
+.menu-bar-itens a {
+  text-decoration: none;
+  color: white;
 }
 
-/* Remove o espaçamento do último ícone da lista */
-.Icones ul li:last-child {
-    margin-right: 0;
+.Icones ul {
+  display: flex;
+  gap: 15px;
+  list-style: none;
+}
+.Icones ul li img {
+  height: 30px;
+  transition: transform 0.3s ease;
+}
+.Icones ul li:hover img {
+  transform: scale(1.3);
 }
 
-/* Ajuste do tamanho das imagens dos ícones */
-.Icones ul li a img {
-    height: 30px;
-    transition: transform 0.3s ease; /* Aplica a transição na imagem */
+.botao_menu{
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1001;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
 }
 
-/* Efeito ao passar o mouse sobre a imagem do ícone */
-.Icones ul li a img:hover {
-    transform: scale(1.3); /* Destaca a imagem ao passar o mouse */
+.seta{
+    width: 30px;
+    height: 5px;
+    color: white;
+    background-color: #00ffff;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    border-radius: 2px; 
+}
+
+.menuAberto .seta1 {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menuAberto .seta2 {
+  opacity: 0;
+}
+
+.menuAberto .seta3 {
+  transform: rotate(-45deg) translate(7px, -6px);
+}
+
+.backdrop {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5); /* fundo semi-transparente */
+  z-index: 1000;
+}
+
+.menu_lateral {
+  position: fixed;
+  top: 0;
+  left: -250px;
+  width: 220px;
+  height: 100vh;
+  background-color: #0d0d1f;
+  color: white;
+  padding: 2rem;
+  transition: left 0.3s ease;
+}
+
+.menu_lateral.aberto {
+  left: 0;
 }

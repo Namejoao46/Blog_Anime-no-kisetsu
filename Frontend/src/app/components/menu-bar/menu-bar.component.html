@@ -1,23 +1,28 @@
-<div class="menu-container">
+<header class="menu-header">
+  <div class="logo">
+    <img src="https://i.postimg.cc/zG2kx5P4/Captura-de-tela-2025-11-23-204517.png" alt="Anime no Kisetsu">
+  </div>
 
-    <div class="logo">
-        <a href="#">
-            <img src="{{ photoLogo }}" appImgFallback="https://wallpapercave.com/wp/wp6183530.png" alt="{{ nomeSite }}">
-        </a>
-    </div>
-    <div class="menu-itens">
-        <button> 
-            <a href="#">{{ buttom }}</a>
-        </button>
-    </div>
 
-    <div class="Icones">
-        <ul>
-            <li>
-                <a href="{{ link }}" target="_blank">
-                <img src="{{ img }}" alt="{{ nomeLogo }}">
-                </a>
-            </li>
-        </ul>
-    </div>
-</div>
+  <nav class="menu-bar-itens">
+    <button><a routerLink="/home">HOME</a></button> | 
+    <button><a routerLink="/comunidade">COMUNIDADE</a></button> | 
+    <button><a routerLink="/contato">CONTATO</a></button>
+  </nav>
+
+
+  <div class="Icones">
+    <ul>
+      | <li><a href="https://bing.com/search?q=GitHub+profile+namejoao46" target="_blank"><img src="https://img.icons8.com/?size=100&id=12599&format=png&color=FFFFFF" alt="GitHub"></a></li> | 
+      <li><a href="https://www.linkedin.com/in/joaopauloavs" target="_blank"><img src="https://img.icons8.com/?size=100&id=8808&format=png&color=FFFFFF" alt="Linkedin"></a></li> | 
+      <li><a href="mailto:paulo.joao.avs@gmail.com"><img src="https://img.icons8.com/?size=100&id=38158&format=png&color=FFFFFF" alt="Gmail"></a></li> | 
+    </ul>
+  </div>
+  <div *ngIf="menuAberto" class="backdrop"  (click)="fecharMenu()"></div>
+  <div class="botao_menu" (click)="alternarMenu()" [class.menuAberto]="menuAberto">
+    <span class="seta seta1"></span>
+    <span class="seta seta2"></span>
+    <span class="seta seta3"></span>
+  </div>
+  <div class="menu_lateral" [class.aberto]="menuAberto"></div>
+</header>

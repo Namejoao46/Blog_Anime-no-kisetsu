@@ -4,11 +4,13 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
 import { NoticiaService } from '../../services/noticia.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { MenuBarComponent } from "../../components/menu-bar/menu-bar.component";
+import { RodapeComponent } from "../../components/rodape/rodape.component";
 
 @Component({
   selector: 'app-noticias',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterModule],
+  imports: [CommonModule, FormsModule, RouterModule, MenuBarComponent, RodapeComponent],
   templateUrl: './noticias.component.html',
   styleUrls: ['./noticias.component.css']
 })

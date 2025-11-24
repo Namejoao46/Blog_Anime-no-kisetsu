@@ -1,6 +1,7 @@
 .container{
     max-width: 1700px;
     margin: 0 auto;
+    top: 52px;
     padding: 20px;
     min-height: 100vh;
     overflow-y: visible;
@@ -28,7 +29,7 @@
 }
 
 .noticia {
-    background: rgba(255, 255, 255, .96);
+    background: #888;
     border-radius: 8px;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, .1);

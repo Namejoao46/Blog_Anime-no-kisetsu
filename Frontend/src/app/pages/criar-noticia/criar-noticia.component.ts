@@ -2,11 +2,13 @@ import { Component } from '@angular/core';
 import { Noticia, NoticiaService } from '../../services/noticia.service';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { MenuBarComponent } from "../../components/menu-bar/menu-bar.component";
+import { RodapeComponent } from "../../components/rodape/rodape.component";
 
 @Component({
   selector: 'app-criar-noticia',
   standalone: true,
-  imports: [FormsModule, CommonModule, ReactiveFormsModule],
+  imports: [FormsModule, CommonModule, ReactiveFormsModule, MenuBarComponent, RodapeComponent],
   templateUrl: './criar-noticia.component.html',
   styleUrls: ['./criar-noticia.component.css']
 })

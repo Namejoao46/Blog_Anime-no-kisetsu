@@ -1,37 +1,34 @@
-import { Component, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, ElementRef, HostListener, Input } from '@angular/core';
 
 @Component({
   selector: 'app-menu-bar',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './menu-bar.component.html',
   styleUrls: ['./menu-bar.component.css']
 })
 export class MenuBarComponent {
- 
-  @Input()
-  photoLogo:string =""
+  menuAberto = false;
 
-  @Input()
-  buttom:string =""
+  constructor(private el: ElementRef){}
 
-  @Input()
-  nomeSite:string =""
+   alternarMenu(){
+  this.menuAberto = !this.menuAberto;
+ }
 
-  @Input()
-  link:string =""
+ fecharMenu(){
+  this.menuAberto = false;
+ }
 
-  @Input()
-  img:string =""
-
-  @Input()
-  nomeLogo:string =""
-
-  constructor(){
-
+ //Escuta qualquer clique no documento — se for fora do menu, ele fecha
+ @HostListener('document:click', ['$event'])
+ onDocumentClick(event: MouseEvent){
+  //Verifica se o clique foi dentro do componente (true) ou fora (false)
+  const clicadoDentro = this.el.nativeElement.contains(event.target);
+  if (!clicadoDentro && this.menuAberto){
+    this.menuAberto = false;
   }
-
-  ngOnInit(): void{
-
-  }
+ }
 
 }

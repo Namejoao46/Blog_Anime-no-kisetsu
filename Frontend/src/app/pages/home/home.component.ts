@@ -8,12 +8,13 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { Noticia, NoticiaService } from '../../services/noticia.service';
+import { RodapeComponent } from "../../components/rodape/rodape.component";
 
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [MenuTitleComponent, MenuBarComponent, NoticiasComponent, NoticiasVerticalComponent, BigCardComponent, CommonModule, FormsModule, RouterModule],
+  imports: [MenuTitleComponent, MenuBarComponent, NoticiasComponent, NoticiasVerticalComponent, BigCardComponent, CommonModule, FormsModule, RouterModule, RodapeComponent],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })

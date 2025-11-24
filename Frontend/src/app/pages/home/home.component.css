@@ -1,11 +1,3 @@
-/* ==== ESTILIZAÇÃO DA BARRA DE MENU ==== */
-.menu-bar {
-    display: flex; /* Alinha os itens horizontalmente */
-    gap: 0px; /* Remove espaçamento entre elementos */
-    align-items: center; /* Centraliza os itens verticalmente */
-    justify-content: end; /* Alinha os itens à direita */
-    margin-bottom: 15px; /* Adiciona espaço abaixo da barra */
-}
 
 .menu-title-wrapper {
     position: relative;
@@ -67,13 +59,6 @@ app-menu-title {
     margin-top: 30px;
     margin-bottom: -60px;
     color: white; /* Adiciona espaçamento abaixo */
-}
-
-/* ==== ESTILIZAÇÃO DOS ITENS DO MENU ==== */
-.menu-bar-itens {
-    display: flex; /* Alinha os itens horizontalmente */
-    justify-content: center; /* Centraliza os itens */
-    gap: 15px; /* Adiciona espaçamento entre os itens */
 }
 
 /* ==== ESTILIZAÇÃO DOS BOTÕES DE CATEGORIAS ==== */
@@ -350,37 +335,4 @@ app-menu-title {
     background-color: #00ffff;
     color: #00ffff;
     margin-right: 10px; /* Espaço entre "A" e o título */
-}
-
-
-
-
-
-.footer{
-    top: 50px;
-    position: absolute;
-    color: white;
-    padding: 10px;   
-    text-align: center;
-    position: relative;
-    margin-top: 50px;
-    margin-bottom: 100px;
-    bottom: 0;
-    width: 100%;
-    height: 100px;
-}
-
-.footer-content{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: -20px;
-    margin-bottom: 20px;
-}
-
-.footer-links{
-    margin-top: 20px;
-    margin-bottom: 20px;
-    display: flex;
-    gap: 15px;
 }
