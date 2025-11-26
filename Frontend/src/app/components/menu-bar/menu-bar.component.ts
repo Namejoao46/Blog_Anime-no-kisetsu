@@ -1,35 +1,85 @@
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, HostListener, Input } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterModule } from '@angular/router';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { Noticia } from '../../services/noticia.service';
 
 @Component({
   selector: 'app-menu-bar',
   standalone: true,
-  imports: [CommonModule, RouterLink, RouterModule, RouterLinkActive],
+  imports: [CommonModule, RouterLink, RouterModule, RouterLinkActive, HttpClientModule],
   templateUrl: './menu-bar.component.html',
   styleUrls: ['./menu-bar.component.css']
 })
-export class MenuBarComponent {
+export class MenuBarComponent implements OnInit {
   menuAberto = false;
+  mostrarMais = false;
 
-  constructor(private el: ElementRef){}
+  usuarioLogado: any = null;
+  topSubcategorias: any[] = [];
+  outrasSubcategorias: any[] = [];
 
-   alternarMenu(){
-  this.menuAberto = !this.menuAberto;
- }
+  constructor(private el: ElementRef, private http: HttpClient) {}
 
- fecharMenu(){
-  this.menuAberto = false;
- }
+  ngOnInit() {
+    // Pega usuário logado
+    this.http.get('http://localhost:8080/usuario', { responseType: 'json' })
+      .subscribe({
+        next: (usuario: any) => this.usuarioLogado = usuario,
+        error: (err) => console.error('Erro ao buscar usuário', err)
+      });
 
- //Escuta qualquer clique no documento — se for fora do menu, ele fecha
- @HostListener('document:click', ['$event'])
- onDocumentClick(event: MouseEvent){
-  //Verifica se o clique foi dentro do componente (true) ou fora (false)
-  const clicadoDentro = this.el.nativeElement.contains(event.target);
-  if (!clicadoDentro && this.menuAberto){
-    this.menuAberto = false;
+    // Pega todas as notícias e calcula top4 subcategorias
+    this.http.get<Noticia[]>('http://localhost:8080/noticias', { responseType: 'json' })
+      .subscribe({
+        next: (noticias) => {
+          if (!Array.isArray(noticias)) {
+            console.error('Resposta inesperada de /noticias', noticias);
+            return;
+          }
+
+          // Agrupa por subcategoria
+          const mapa = new Map<string, { categoria: string, nome: string, total: number }>();
+
+          noticias.forEach(n => {
+            const chave = `${n.categoria}-${n.subcategoria}`;
+            if (!mapa.has(chave)) {
+              mapa.set(chave, { categoria: n.categoria, nome: n.subcategoria, total: 0 });
+            }
+            mapa.get(chave)!.total++;
+          });
+
+          // Ordena por total
+          const ordenadas = Array.from(mapa.values())
+            .sort((a, b) => b.total - a.total);
+
+          this.topSubcategorias = ordenadas.slice(0, 4);
+          this.outrasSubcategorias = ordenadas.slice(4);
+        },
+        error: (err) => console.error('Erro ao buscar notícias', err)
+      });
   }
- }
 
+
+  alternarMenu() {
+    this.menuAberto = !this.menuAberto;
+    if (!this.menuAberto) this.mostrarMais = false;
+  }
+
+  fecharMenu() {
+    this.menuAberto = false;
+    this.mostrarMais = false;
+  }
+
+  toggleMais() {
+    this.mostrarMais = !this.mostrarMais;
+  }
+
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: MouseEvent) {
+    const clicadoDentro = this.el.nativeElement.contains(event.target);
+    if (!clicadoDentro && this.menuAberto) {
+      this.fecharMenu();
+    }
+  }
 }

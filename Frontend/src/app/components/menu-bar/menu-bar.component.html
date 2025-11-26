@@ -5,7 +5,7 @@
     </a>
   </div>
 
-
+  <!-- Categorias principais sempre visíveis -->
   <nav class="menu-bar-itens">
     <a routerLink="/categoria/manhwa" routerLinkActive="ativo" [routerLinkActiveOptions]="{ exact: true }">MANHWA</a>
     <a routerLink="/categoria/anime" routerLinkActive="ativo" [routerLinkActiveOptions]="{ exact: true }">ANIME</a>
@@ -13,7 +13,7 @@
     <a routerLink="/categoria/gamer" routerLinkActive="ativo" [routerLinkActiveOptions]="{ exact: true }">GAMER</a>
   </nav>
 
-
+  <!-- Ícones sociais -->
   <div class="Icones">
     <ul>
       | <li><a href="https://bing.com/search?q=GitHub+profile+namejoao46" target="_blank"><img src="https://img.icons8.com/?size=100&id=12599&format=png&color=FFFFFF" alt="GitHub"></a></li> | 
@@ -21,11 +21,49 @@
       <li><a href="mailto:paulo.joao.avs@gmail.com"><img src="https://img.icons8.com/?size=100&id=38158&format=png&color=FFFFFF" alt="Gmail"></a></li> | 
     </ul>
   </div>
-  <div *ngIf="menuAberto" class="backdrop"  (click)="fecharMenu()"></div>
+
+  <!-- Backdrop e botão do menu lateral -->
+  <div *ngIf="menuAberto" class="backdrop" (click)="fecharMenu()"></div>
   <div class="botao_menu" (click)="alternarMenu()" [class.menuAberto]="menuAberto">
     <span class="seta seta1"></span>
     <span class="seta seta2"></span>
     <span class="seta seta3"></span>
   </div>
-  <div class="menu_lateral" [class.aberto]="menuAberto"></div>
+
+  <!-- Menu lateral: aparece só quando menuAberto = true -->
+  <div class="menu_lateral" [class.aberto]="menuAberto">
+    <div class="menu-lateral-conteudo">
+      <!-- Login / Perfil -->
+      <ng-container *ngIf="usuarioLogado; else loginLink">
+        <a routerLink="/perfil">{{ usuarioLogado.nome }}</a>
+      </ng-container>
+      <ng-template #loginLink>
+        <a routerLink="/login">Login</a>
+      </ng-template>
+
+      <!-- Categorias principais (fixas) -->
+      <a routerLink="/categoria/manhwa" routerLinkActive="ativo" [routerLinkActiveOptions]="{ exact: true }">MANHWA</a>
+      <a routerLink="/categoria/anime" routerLinkActive="ativo" [routerLinkActiveOptions]="{ exact: true }">ANIME</a>
+      <a routerLink="/categoria/manga" routerLinkActive="ativo" [routerLinkActiveOptions]="{ exact: true }">MANGA</a>
+      <a routerLink="/categoria/gamer" routerLinkActive="ativo" [routerLinkActiveOptions]="{ exact: true }">GAMER</a>
+
+      <!-- Top 4 subcategorias -->
+      <ng-container *ngFor="let sub of topSubcategorias">
+        <a [routerLink]="['/categoria', sub.categoria, sub.nome]">{{ sub.nome }}</a>
+      </ng-container>
+
+      <!-- Mais... -->
+      <div class="mais-subcategorias">
+        <span (click)="toggleMais()">
+          Mais...
+        </span>
+        <div class="dropdown" *ngIf="mostrarMais">
+          <a *ngFor="let sub of outrasSubcategorias" [routerLink]="['/categoria', sub.categoria, sub.nome]">
+            {{ sub.nome }}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </header>

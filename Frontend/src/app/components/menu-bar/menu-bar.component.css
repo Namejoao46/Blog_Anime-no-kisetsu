@@ -91,7 +91,7 @@
     position: fixed;
     top: 20px;
     left: 20px;
-    z-index: 1001;
+    z-index: 1002;
     cursor: pointer;
     display: flex;
     flex-direction: column;
@@ -136,10 +136,103 @@
   height: 100vh;
   background-color: #0d0d1f;
   color: white;
-  padding: 2rem;
+  padding: 2rem 1.5rem;
   transition: left 0.3s ease;
+  z-index: 1001;
+  overflow-y: auto;
 }
 
 .menu_lateral.aberto {
   left: 0;
+}
+
+/* Conteúdo interno do menu lateral */
+.menu-lateral-conteudo {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Links do menu lateral */
+.menu-lateral-conteudo a {
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.menu-lateral-conteudo a:hover {
+  background-color: #00ffff;
+  color: #0f1316;
+}
+
+/* Subcategorias dentro do menu lateral */
+.subcategorias {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+/* Links das subcategorias */
+.subcategorias a {
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+  padding: 6px 12px;
+  transition: color 0.3s ease;
+}
+
+.subcategorias a:hover {
+  color: #00ffff;
+}
+
+/* Barra inferior fixa quando ativo */
+.subcategorias a.ativo::before {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #00ffff;
+  border-radius: 2px;
+}
+
+/* Mais... botão */
+.mais-subcategorias {
+  position: relative; /* garante que o dropdown fique ancorado aqui */
+  cursor: pointer;
+  font-weight: bold;
+  color: #00ffff;
+}
+
+/* Dropdown escondido inicialmente */
+.mais-subcategorias .dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #0f1316;
+  border: 1px solid #00ffff;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 180px;
+  z-index: 100;
+  box-shadow: 0 0 10px rgba(0,255,255,0.5);
+}
+
+.mais-subcategorias .dropdown a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.mais-subcategorias .dropdown a:hover {
+  color: #00ffff;
 }
