@@ -1,13 +1,16 @@
 <header class="menu-header">
   <div class="logo">
-    <img src="https://i.postimg.cc/zG2kx5P4/Captura-de-tela-2025-11-23-204517.png" alt="Anime no Kisetsu">
+    <a routerLink="/home">
+      <img src="https://i.postimg.cc/zG2kx5P4/Captura-de-tela-2025-11-23-204517.png" alt="Anime no Kisetsu">
+    </a>
   </div>
 
 
   <nav class="menu-bar-itens">
-    <button><a routerLink="/home">HOME</a></button> | 
-    <button><a routerLink="/comunidade">COMUNIDADE</a></button> | 
-    <button><a routerLink="/contato">CONTATO</a></button>
+    <a routerLink="/categoria/manhwa" routerLinkActive="ativo" [routerLinkActiveOptions]="{ exact: true }">MANHWA</a>
+    <a routerLink="/categoria/anime" routerLinkActive="ativo" [routerLinkActiveOptions]="{ exact: true }">ANIME</a>
+    <a routerLink="/categoria/manga" routerLinkActive="ativo" [routerLinkActiveOptions]="{ exact: true }">MANGA</a>
+    <a routerLink="/categoria/gamer" routerLinkActive="ativo" [routerLinkActiveOptions]="{ exact: true }">GAMER</a>
   </nav>
 
 

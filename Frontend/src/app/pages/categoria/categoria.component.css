@@ -1,0 +1,70 @@
+.container{
+    max-width: 1600px;
+    margin: 100px auto 40px;
+    padding: 0 20px;
+    overflow-y: visible;
+    z-index: 2;
+    text-align: center;
+}
+
+.categoria{
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    color: #00ffff;
+    text-align: center;
+}
+
+.listar-noticia{
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 30px;
+    justify-items: center;
+}
+
+.listar-noticia a{
+    text-decoration: none;
+    color: inherit;
+    width: 100%;
+    max-width: 350px;
+    margin: 0 auto;
+}
+
+.paginacao {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.paginacao button{
+    background-color: transparent;
+    border: 2px solid #00ffff;
+    color: white;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 4px;
+}
+
+.paginacao button:hover {
+    background-color: #00ffff;
+    color: #0f1316;
+}
+
+.paginacao button.ativo{
+    background-color: #00ffff;
+    color: #0f1316;
+}
+
+@media (max-width: 900px) {
+  .listar-noticia {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .listar-noticia {
+    grid-template-columns: 1fr;
+  }
+}

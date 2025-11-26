@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component, ElementRef, HostListener, Input } from '@angular/core';
+import { RouterLink, RouterLinkActive, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-menu-bar',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink, RouterModule, RouterLinkActive],
   templateUrl: './menu-bar.component.html',
   styleUrls: ['./menu-bar.component.css']
 })

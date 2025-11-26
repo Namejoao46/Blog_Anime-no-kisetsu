@@ -1,1 +1,36 @@
+<header>
+  <app-menu-bar></app-menu-bar>
+</header>
+
+<div class="container">
+    <h1 class="categoria">
+        {{ categoria | uppercase }}
+        <span *ngIf="subcategoria">
+            - {{ subcategoria | uppercase }}
+        </span>
+    </h1>
+    <div class="listar-noticia">
+        <div *ngFor="let noticia of noticiasPagina">
+            <a [routerLink]="['/noticia', noticia.id]">
+                <app-ultimas-noticias
+                    [photoCover]="noticia.imagemUrl"
+                    [cardName]="noticia.subcategoria"
+                    [cardData]="noticia.dataPublicacao"
+                    [cardDescription]="noticia.titulo"
+                    [cardCategory]="noticia.categoria"
+                ></app-ultimas-noticias>
+            </a>
+    </div>
+    </div>
+
+    <div class="paginacao" *ngIf="totalPaginas > 1">
+        <button
+        *ngFor="let pagina of [].constructor(totalPaginas); let i = index"
+        (click)="mudarPagina(i+1)"
+        [class.ativo]="paginaAtual === i+1">
+            Pag {{ i+1 }}
+        </button>
+    </div>
+    <app-rodape></app-rodape>
+</div>
 

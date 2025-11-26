@@ -33,22 +33,45 @@
   display: flex;
   gap: 30px;
 }
-.menu-bar-itens button {
-  font-size: 18px;
-  font-weight: bold;
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: white;
-}
-.menu-bar-itens button:hover {
-  text-decoration: underline;
-  transform: scale(1.1);
-}
 
 .menu-bar-itens a {
-  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
   color: white;
+  position: relative;
+  padding: 8px 16px;
+  text-decoration: none;
+  overflow: hidden;
+}
+
+/* barra com efeito de carregamento */
+.menu-bar-itens a::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0; /* ancorado à esquerda, mas vamos usar transform para animar */
+  height: 3px;
+  width: 100%;
+  background-color: #00ffff;
+  transform: scaleX(0);
+  transform-origin: right;           /* ao sair, encolhe da direita para a esquerda */
+  transition: transform 0.4s ease;
+}
+
+/* hover: cresce da esquerda para a direita */
+.menu-bar-itens a:hover::before {
+  transform: scaleX(1);
+  transform-origin: left;            /* ao entrar, expande da esquerda para a direita */
+}
+
+/* ativo: barra fixa e texto ciano */
+.menu-bar-itens a.ativo {
+  color: #00ffff;
+}
+
+.menu-bar-itens a.ativo::before {
+  transform: scaleX(1);
+  transform-origin: left;
 }
 
 .Icones ul {
