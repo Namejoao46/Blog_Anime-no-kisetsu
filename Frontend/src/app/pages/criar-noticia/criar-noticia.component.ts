@@ -23,7 +23,8 @@ export class CriarNoticiaComponent {
     imagemUrl: ['', Validators.required],
     categoria: ['', Validators.required],
     subcategoria: ['', Validators.required],
-    dataPublicacao: ['', Validators.required]
+    dataPublicacao: ['', Validators.required],
+    autor: ['', Validators.required]
     });
   }
 

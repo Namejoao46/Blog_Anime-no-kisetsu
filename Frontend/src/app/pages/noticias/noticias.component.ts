@@ -15,7 +15,7 @@ import { RodapeComponent } from "../../components/rodape/rodape.component";
   styleUrls: ['./noticias.component.css']
 })
 export class NoticiasComponent implements OnInit {
-  noticias: Noticia[] = [];
+  noticia?: Noticia;
 
   constructor(
     private route: ActivatedRoute,
@@ -23,19 +23,12 @@ export class NoticiasComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const categoria = this.route.snapshot.paramMap.get('categoria');
-    const subcategoria = this.route.snapshot.paramMap.get('subcategoria');
-
-    if (categoria && subcategoria) {
-      this.noticiaService.buscarPorCategoria(categoria, subcategoria).subscribe({
-        next: (data) => {
-          this.noticias = data;
-        },
-        error: (err) => {
-          console.error('Erro ao buscar notícias:', err);
-        }
-    })
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+    if (id) {
+      this.noticiaService.buscarPorId(id).subscribe({
+        next: (data) => this.noticia = data,
+        error: (err) => console.error('Erro ao buscar notícia:', err)
+      });
     }
-    
   }
 }

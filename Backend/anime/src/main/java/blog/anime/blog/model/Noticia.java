@@ -31,6 +31,7 @@ public class Noticia {
 
     @NotNull(message = "A data de publicação é obrigatória")
     private LocalDate dataPublicacao;
+    private String autor;
 
     public long getId() {
         return id;
@@ -89,4 +90,12 @@ public class Noticia {
         this.dataPublicacao = dataPublicacao;
     }
 
-}
+   public String getAutor() {
+        return autor;
+    }
+
+    public void setAutor(String autor) {
+        this.autor = autor;
+    }
+
+} 

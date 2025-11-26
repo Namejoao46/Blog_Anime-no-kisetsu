@@ -1,7 +1,28 @@
+a {
+  text-decoration: none;   
+  color: inherit;          
+}
+
+a:visited {
+  color: inherit;          
+}
+
+a:hover {
+  text-decoration: none;   
+  color: inherit;         
+}
+
+a:active {
+  text-decoration: none;
+  color: inherit;
+}
+
 
 .menu-title-wrapper {
     position: relative;
+    margin-top: 80px;
     margin-left: 20px;
+    margin-right: 40px;
     display: flex;
     align-items: center;
 }
@@ -14,16 +35,6 @@
     gap: 30px;
     scrollbar-width: none; /* Firefox */
     -ms-overflow-style: none; /* Internet Explorer 10+ */
-}
-
-.menu-title-rolante::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Edge */
-}
-
-app-menu-title {
-    margin-right: 40px;
-    flex-shrink: 0;
-    border-radius: 50px;
 }
 
 .scroll-btn {
@@ -122,10 +133,23 @@ app-menu-title {
 
 /* ==== ESTILIZAÇÃO DO SCROLLER DE NOTÍCIAS ==== */
 .news__rolante {
-    display: flex; /* Alinha as notícias horizontalmente */
-    overflow-x: hidden; /* Oculta o conteúdo extra horizontalmente */
-    scroll-behavior: smooth; /* Adiciona um efeito suave ao scroll */
-    width: 95%; /* Define a largura como 95% */
+  display: flex;
+  overflow-x: auto;       /* mantém o scroll funcionando */
+  scroll-behavior: smooth;
+  width: 95%;
+
+  /* Esconde scrollbar em navegadores diferentes */
+  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none; /* IE e Edge antigo */
+}
+
+.news__rolante::-webkit-scrollbar {
+  display: none;          /* Chrome, Safari, Edge moderno */
+}
+
+/* Impede o host dos cards de encolher, garantindo largura fixa no flex */
+app-ultimas-noticias {
+  flex: 0 0 auto;       /* não encolhe, não cresce automaticamente */
 }
 
 /* ==== ESTILIZAÇÃO DOS BOTÕES DE NAVEGAÇÃO ==== */
@@ -209,7 +233,6 @@ app-menu-title {
     align-items: center;
     width: 100%;
     max-width: 828px;
-    border: 2px solid greenyellow;
 }
 /* ==== ESTILIZAÇÃO DOS BOTÕES DE NAVEGAÇÃO DO BIG CARD ==== */
 .buttom-ante-big, .buttom-prox-big {

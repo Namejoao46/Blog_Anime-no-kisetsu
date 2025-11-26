@@ -5,21 +5,19 @@
 <div class="container">
     <div class="container_noticia">
         
+        <div class="noticia" *ngIf="noticia">
+                <nav class="breadcrumb">
+                    <a routerLink="/">Home</a> /
+                    <a [routerLink]="['/categoria', noticia.categoria]">{{ noticia.categoria }}</a> /
+                    <span>{{ noticia.subcategoria }}</span>
+                </nav>
 
-        <div *ngFor="let noticia of noticias" class="noticia">
-            <nav class="breadcrumb">
-                <a routerLink="/">Home</a> /
-                <a [routerLink]="['/noticia', noticias[0].categoria]">{{ noticias[0].categoria }}</a> /
-                <span>{{ noticias[0].subcategoria }}</span>
-            </nav>
-
-            <h1 class="titulo">{{ noticia.titulo }}</h1>
-            <div class="meta">
-                <span>Joao Paulo | {{ noticia.dataPublicacao }} </span>
-            </div>
-            <img [src]="noticia.imagemUrl" alt=" {{ noticia.titulo }} " class="img">
-            <p class="texto">{{ noticia.texto }}</p>
-
+                <h1 class="titulo">{{ noticia.titulo }}</h1>
+                <div class="meta">
+                    <span>{{ noticia.autor }} | {{ noticia.dataPublicacao }} </span>
+                </div>
+                <img [src]="noticia.imagemUrl" alt="{{ noticia.titulo }}" class="img">
+                <p class="texto">{{ noticia.texto }}</p>
         </div>
     </div>
 <app-rodape></app-rodape>

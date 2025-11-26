@@ -1,6 +1,7 @@
 package blog.anime.blog.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,5 +27,13 @@ public class NoticiaService {
     
     public List<Noticia> listarTodas() {
         return noticiaRepository.findAll();
-    }  
+    }
+    
+    public Noticia buscarPorId(Long id) {
+    if (id == null) {
+        throw new IllegalArgumentException("O ID da notícia não pode ser nulo.");
+    }
+        Optional<Noticia> noticiaOpt = noticiaRepository.findById(id);
+        return noticiaOpt.orElse(null);
+    }
 }

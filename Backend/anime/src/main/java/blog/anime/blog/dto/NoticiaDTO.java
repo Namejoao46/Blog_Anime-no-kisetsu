@@ -21,6 +21,7 @@ public class NoticiaDTO {
 
     @NotNull(message = "A data de publicação é obrigatória")
     private LocalDate dataPublicacao;
+    private String autor;
 
     public Noticia toEntity() {
         Noticia noticia = new Noticia();
@@ -30,6 +31,7 @@ public class NoticiaDTO {
         noticia.setCategoria(this.categoria);
         noticia.setSubcategoria(this.subcategoria);
         noticia.setDataPublicacao(this.dataPublicacao);
+        noticia.setAutor(this.autor);
         return noticia;
     }
 
@@ -51,4 +53,12 @@ public class NoticiaDTO {
 
     public LocalDate getDataPublicacao() { return dataPublicacao; }
     public void setDataPublicacao(LocalDate dataPublicacao) { this.dataPublicacao = dataPublicacao; }
+
+    public String getAutor() {
+        return autor;
+    }
+
+    public void setAutor(String autor) {
+        this.autor = autor;
+    }
 }

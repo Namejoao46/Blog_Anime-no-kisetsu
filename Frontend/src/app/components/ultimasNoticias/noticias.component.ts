@@ -1,12 +1,12 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-noticias',
+  selector: 'app-ultimas-noticias',
   imports: [],
   templateUrl: './noticias.component.html',
   styleUrl: './noticias.component.css'
 })
-export class NoticiasComponent {
+export class UltimasNoticiasComponent {
 
   @Input()
   photoCover:string =""
@@ -16,6 +16,8 @@ export class NoticiasComponent {
   cardData:string =""
   @Input()
   cardDescription:string =""
+  @Input() 
+  cardCategory!: string;
   
 
   constructor() {

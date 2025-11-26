@@ -1,111 +1,113 @@
+.banner {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 590px;
+  width: 1430px;
+  border-radius: 50px;
+  margin-left: 20px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 20px;
+  box-sizing: border-box;
+}
 
-
-/* ==== ESTILIZAÇÃO DO BANNER ==== */
-.banner { 
-    background-size: cover; /* Ajusta a imagem para cobrir completamente o contêiner */
-    background-position: center; /* Centraliza a imagem dentro do banner */
-    background-repeat: no-repeat; /* Impede que a imagem se repita */
-    height: 590px; /* Define a altura do banner */
-    width: 1430px; /* Define a largura do banner */
-    border-radius: 50px; /* Arredonda as bordas do banner */
-    margin-left: 20px; /* Adiciona um espaçamento à esquerda */
-    position: relative; /* Define posição relativa para permitir posicionamento de elementos internos */
-    overflow: hidden; /* Esconde qualquer conteúdo que ultrapasse as bordas */
-} 
-
-/* ==== EFEITO DE DESFOQUE NA PARTE INFERIOR ==== */
 .blur-bottom {
-    position: absolute; /* Posiciona o elemento sobre o banner */
-    bottom: 0; /* Alinha o elemento na parte inferior do banner */
-    left: 0; /* Posiciona o elemento na borda esquerda */
-    width: 100%; /* Faz o efeito ocupar toda a largura do banner */
-    height: 150px; /* Define a altura do efeito, ajuste conforme necessário */
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 6) 85%); /* Gradiente de preto para criar um efeito de sombra */
-    backdrop-filter: blur(1.7px); /* Aplica um leve desfoque para melhorar a transição */
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 150px;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 85%);
+  backdrop-filter: blur(1.7px);
+  z-index: 0;
 }
 
-/* ==== ESTILIZAÇÃO DOS BOTÕES GERAIS ==== */
-button {
-    all: unset; /* Remove todos os estilos padrão do botão para personalização */
-}
-
-/* ==== BOTÃO "MAIS" DENTRO DO BANNER ==== */
 .bottom-more {
-    position: absolute; /* Posiciona o botão sobre o banner */
-    bottom: 50px; /* Define distância da parte inferior do banner */
-    right: 80px; /* Define distância da borda direita */
-    padding: 10px 20px; /* Ajusta o espaçamento interno */
-    background-color: #333; /* Define fundo branco */
-    color: #00ffff; /* Define cor do texto */
-    border: none; /* Remove a borda */
-    border-radius: 10px 25px 10px 25px; /* Adiciona um formato arredondado personalizado */
-    cursor: pointer; /* Muda o cursor para indicar ação */
-    font-size: 20px; /* Define o tamanho da fonte */
-    font-weight: bold; /* Deixa o texto em negrito */
-    transition: transform 0.3s ease, z-index 0.3s ease; /* Aplica efeitos de transição ao botão */
+  position: absolute;
+  bottom: 50px;
+  right: 80px;
 }
 
-/* ==== EFEITO HOVER NO BOTÃO "MAIS" ==== */
-.bottom-more:hover {
-    background-color: #ff9900; /* Altera a cor de fundo ao passar o mouse */
-    color: black; /* Altera a cor do texto */
-    transform: scale(1.1); /* Faz o botão aumentar ligeiramente ao passar o mouse */
-    z-index: 10; /* Eleva o botão sobre outros elementos */
+.bottom-more button {
+  padding: 10px 20px;
+  background-color: #333;
+  color: #00ffff;
+  border: none;
+  border-radius: 10px 25px 10px 25px;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
+  transition: transform 0.3s ease, z-index 0.3s ease;
 }
 
-/* ==== REMOÇÃO DE ESTILOS PADRÃO DOS TÍTULOS E LINKS ==== */
+.bottom-more button:hover {
+  background-color: #ff9900;
+  color: black;
+  transform: scale(1.1);
+  z-index: 10;
+}
+
 h1, a {
-    all: unset; /* Remove todos os estilos padrão para garantir personalização */
+  all: unset;
 }
 
-/* ==== ESTILIZAÇÃO DA DATA ==== */
-.data {
-    left: 230px; /* Define a posição horizontal */
-    top: 403px; /* Define a posição vertical */
-    position: absolute; /* Define posição absoluta dentro do banner */
-    font-size: 20px; /* Define tamanho da fonte */
-    font-weight: bold; /* Deixa o texto em negrito */
-    color: #00ffff; /* Define a cor como azul claro */
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 2;
 }
 
-/* ==== ESTILIZAÇÃO DO NOME DO ANIME/MANGÁ/JOGO ==== */
 .name {
-    left: 55px; /* Define a posição horizontal */
-    top: 400px; /* Define a posição vertical */
-    position: absolute; /* Define posição absoluta dentro do banner */
-    background: rgba(0, 0, 0, 0.5); /* Adiciona um fundo semitransparente */
-    font-weight: bold; /* Deixa o texto em negrito */
-    font-size: 16px; /* Define tamanho da fonte */
-    padding: 5px 10px; /* Adiciona espaçamento interno */
-    border-radius: 5px 15px 5px 15px; /* Adiciona um formato arredondado personalizado */
+  font-size: 16px;
+  font-weight: bold;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 5px 10px;
+  border-radius: 5px 15px 5px 15px;
+  color: white;
+  max-width: fit-content;
 }
 
-/* ==== ESTILIZAÇÃO DO TÍTULO DA NOTÍCIA ==== */
-.title-noticia { 
-    width: 650px; /* Define a largura do título */
-    position: absolute; /* Permite posicionamento dentro do .banner */
-    left: 40px; /* Define a distância da borda esquerda */
-    bottom: 70px; /* Define a distância da borda inferior */
-    font-size: 32px; /* Define tamanho da fonte */
-    font-weight: bold; /* Deixa o texto em negrito */
-    background-color: rgba(0, 0, 0, 0); /* Mantém fundo transparente para melhor contraste */
-    padding: 10px; /* Adiciona espaçamento interno */
+.data {
+  font-size: 20px;
+  font-weight: bold;
+  color: #00ffff;
+  margin-top: 5px;
 }
 
-/* ==== ESTILIZAÇÃO DOS LINKS DO TÍTULO, TEXTO E NOME ==== */
-.title-noticia a, .text a, .name a { 
-    text-decoration: none !important; /* Remove a decoração do link */
-    background: none !important; /* Remove fundo */
-    color: white !important; /* Define a cor do texto como branca */
-} 
+.title-noticia {
+  font-size: 35px;
+  font-weight: bold;
+  color: #121316;
+  background-color: rgba(0, 0, 0, 0);
+  padding: 5px;
+  max-width: 650px;
+  word-wrap: break-word;
+}
 
-/* ==== ESTILIZAÇÃO DO TEXTO DA NOTÍCIA ==== */
-.text { 
-    width: 650px; /* Define a largura do texto */
-    position: absolute; /* Permite posicionamento dentro do .banner */
-    left: 40px; /* Define distância da borda esquerda */
-    top: 495px; /* Define distância da borda superior */
-    font-size: 20px; /* Define tamanho da fonte */
-    background-color: rgba(0, 0, 0, 0); /* Mantém fundo transparente para melhor contraste */
-    padding: 10px; /* Adiciona espaçamento interno */
+.text {
+  font-size: 20px;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0);
+  padding: 10px;
+  max-width: 650px;
+}
+
+.text a {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3; /* Chrome/Safari/Edge */
+  line-clamp: 3;         /* padrão futuro */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+}
+
+.title-noticia a, .text a, .name a {
+  text-decoration: none !important;
+  background: none !important;
 }

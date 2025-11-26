@@ -6,6 +6,9 @@
     <h2>Cadastrar Nova Notícia</h2>
 
     <form [formGroup]="noticiaForm" (ngSubmit)="salvarNoticia()">
+        <label>Autor:</label>
+        <input type="text" formControlName="autor">
+        
         <label>Título:</label>
         <input type="text" formControlName="titulo">
 

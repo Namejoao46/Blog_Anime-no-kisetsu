@@ -6,4 +6,5 @@ export interface Noticia {
     categoria: string;
     subcategoria: string;
     dataPublicacao: string;
+    autor: string;
 }
