@@ -33,31 +33,48 @@
   <!-- Menu lateral: aparece só quando menuAberto = true -->
   <div class="menu_lateral" [class.aberto]="menuAberto">
     <div class="menu-lateral-conteudo">
-      <!-- Login / Perfil -->
-      <ng-container *ngIf="usuarioLogado; else loginLink">
-        <a routerLink="/perfil">{{ usuarioLogado.nome }}</a>
-      </ng-container>
+
+      <div class="container-perfil">
+        <!-- Login / Perfil -->
+        <ng-container *ngIf="usuarioLogado; else loginLink">
+          <h2>{{ usuarioLogado.username }}</h2>
+          <a (click)="sair()">Sair</a>
+          <!-- Criar Notícia só aparece se logado -->
+          <a routerLink="/criar-noticia">Criar Notícia</a>
+        </ng-container>
+      </div>
+
       <ng-template #loginLink>
         <a routerLink="/login">Login</a>
       </ng-template>
 
-      <!-- Categorias principais (fixas) -->
-      <a routerLink="/categoria/manhwa" routerLinkActive="ativo" [routerLinkActiveOptions]="{ exact: true }">MANHWA</a>
-      <a routerLink="/categoria/anime" routerLinkActive="ativo" [routerLinkActiveOptions]="{ exact: true }">ANIME</a>
-      <a routerLink="/categoria/manga" routerLinkActive="ativo" [routerLinkActiveOptions]="{ exact: true }">MANGA</a>
-      <a routerLink="/categoria/gamer" routerLinkActive="ativo" [routerLinkActiveOptions]="{ exact: true }">GAMER</a>
+      <br>
 
-      <!-- Top 4 subcategorias -->
-      <ng-container *ngFor="let sub of topSubcategorias">
-        <a [routerLink]="['/categoria', sub.categoria, sub.nome]">{{ sub.nome }}</a>
-      </ng-container>
+      <div class="container-categoria">
+        <h2>Categorias</h2>
+          <!-- Categorias principais (fixas) -->
+          <a routerLink="/categoria/manhwa" routerLinkActive="ativo" [routerLinkActiveOptions]="{ exact: true }">Manhwa</a>
+          <a routerLink="/categoria/anime" routerLinkActive="ativo" [routerLinkActiveOptions]="{ exact: true }">Anime</a>
+          <a routerLink="/categoria/manga" routerLinkActive="ativo" [routerLinkActiveOptions]="{ exact: true }">Manga</a>
+          <a routerLink="/categoria/gamer" routerLinkActive="ativo" [routerLinkActiveOptions]="{ exact: true }">Gamer</a>
+      </div>
 
-      <!-- Mais... -->
-      <div class="mais-subcategorias">
-        <span (click)="toggleMais()">
-          Mais...
-        </span>
-        <div class="dropdown" *ngIf="mostrarMais">
+      <br>
+      <div class="container-subcategoria">
+        <h2>Subcategorias</h2>
+        <!-- Top 4 subcategorias -->
+        <ng-container *ngFor="let sub of topSubcategorias">
+          <a [routerLink]="['/categoria', sub.categoria, sub.nome]">{{ sub.nome }}</a>
+        </ng-container>
+
+        <!-- Mais... -->
+        <div class="mais-subcategorias">
+          <span (click)="toggleMais()">Mais...</span>
+        </div>
+      </div>
+      <!-- Caixa flutuante fora do menu -->
+      <div class="caixa-flutuante" *ngIf="mostrarMais" (click)="$event.stopPropagation()">
+        <div class="scroll-vertical">
           <a *ngFor="let sub of outrasSubcategorias" [routerLink]="['/categoria', sub.categoria, sub.nome]">
             {{ sub.nome }}
           </a>
@@ -65,5 +82,4 @@
       </div>
     </div>
   </div>
-
 </header>

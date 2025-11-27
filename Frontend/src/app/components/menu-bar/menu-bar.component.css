@@ -152,14 +152,23 @@
   flex-direction: column;
   gap: 20px;
 }
+.container-perfil,
+.container-categoria,
+.container-subcategoria{
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.container-perfil{
+  margin-top: 20px;
+}
 
 /* Links do menu lateral */
 .menu-lateral-conteudo a {
-  font-size: 16px;
-  font-weight: bold;
+  font-size: 14px;
   color: white;
   text-decoration: none;
-  padding: 8px 12px;
   border-radius: 4px;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
@@ -167,14 +176,6 @@
 .menu-lateral-conteudo a:hover {
   background-color: #00ffff;
   color: #0f1316;
-}
-
-/* Subcategorias dentro do menu lateral */
-.subcategorias {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  margin-top: 20px;
 }
 
 /* Links das subcategorias */
@@ -195,7 +196,6 @@
 .subcategorias a.ativo::before {
   content: "";
   position: absolute;
-  bottom: -4px;
   left: 0;
   width: 100%;
   height: 2px;
@@ -205,34 +205,63 @@
 
 /* Mais... botão */
 .mais-subcategorias {
-  position: relative; /* garante que o dropdown fique ancorado aqui */
-  cursor: pointer;
+  position: relative;
   font-weight: bold;
   color: #00ffff;
+  cursor: pointer;
+  margin-top: 10px;
 }
 
-/* Dropdown escondido inicialmente */
-.mais-subcategorias .dropdown {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background: #0f1316;
+.caixa-flutuante {
+  position: fixed;
+  top: 80px;
+  left: 220px;
+  background-color: #0f1316;
   border: 1px solid #00ffff;
-  padding: 10px;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,255,255,0.4);
+  z-index: 1002;
+  max-height: 500px;
+  max-width: 300px;
+  overflow-y: auto;
+}
+
+.caixa-flutuante a {
+  background-color: #1a1a2e;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  width: 100%; /* ocupa toda a largura da caixa */
+}
+
+.caixa-flutuante a:hover {
+  background-color: #00ffff;
+  color: #0f1316;
+}
+
+.scroll-vertical {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  min-width: 180px;
-  z-index: 100;
-  box-shadow: 0 0 10px rgba(0,255,255,0.5);
+  gap: 12px;
 }
 
-.mais-subcategorias .dropdown a {
+.scroll-vertical a {
+  background-color: #1a1a2e;
   color: white;
+  padding: 10px 14px;
+  border-radius: 6px;
   text-decoration: none;
-  transition: color 0.3s ease;
+  font-weight: bold;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-.mais-subcategorias .dropdown a:hover {
-  color: #00ffff;
+.scroll-vertical a:hover {
+  background-color: #00ffff;
+  color: #0f1316;
 }

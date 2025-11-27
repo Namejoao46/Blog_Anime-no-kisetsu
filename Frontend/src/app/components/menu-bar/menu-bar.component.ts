@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component, ElementRef, HostListener, OnInit } from '@angular/core';
-import { RouterLink, RouterLinkActive, RouterModule } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive, RouterModule } from '@angular/router';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Noticia } from '../../services/noticia.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-menu-bar',
@@ -19,17 +20,41 @@ export class MenuBarComponent implements OnInit {
   topSubcategorias: any[] = [];
   outrasSubcategorias: any[] = [];
 
-  constructor(private el: ElementRef, private http: HttpClient) {}
+  constructor(private el: ElementRef, private http: HttpClient, private router: Router, private auth: AuthService) {}
 
   ngOnInit() {
-    // Pega usuário logado
-    this.http.get('http://localhost:8080/usuario', { responseType: 'json' })
-      .subscribe({
-        next: (usuario: any) => this.usuarioLogado = usuario,
-        error: (err) => console.error('Erro ao buscar usuário', err)
-      });
+    this.carregarUsuario();
+    this.carregarSubcategorias();
+  }
 
-    // Pega todas as notícias e calcula top4 subcategorias
+  /** Busca usuário logado usando token salvo */
+  private carregarUsuario() {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      console.warn('Nenhum token encontrado, usuário não logado');
+      return;
+    }
+
+    this.http.get('http://localhost:8080/usuario', {
+      headers: { Authorization: `Bearer ${token}` }
+    }).subscribe({
+      next: (usuario: any) => {
+        this.usuarioLogado = usuario;
+        localStorage.setItem('usuario', JSON.stringify(usuario));
+      },
+      error: (err) => {
+        console.error('Erro ao buscar usuário', err);
+        // tenta recuperar do cache
+        const usuarioCache = localStorage.getItem('usuario');
+        if (usuarioCache) {
+          this.usuarioLogado = JSON.parse(usuarioCache);
+        }
+      }
+    });
+  }
+
+  /** Busca notícias e calcula top4 subcategorias */
+  private carregarSubcategorias() {
     this.http.get<Noticia[]>('http://localhost:8080/noticias', { responseType: 'json' })
       .subscribe({
         next: (noticias) => {
@@ -38,7 +63,6 @@ export class MenuBarComponent implements OnInit {
             return;
           }
 
-          // Agrupa por subcategoria
           const mapa = new Map<string, { categoria: string, nome: string, total: number }>();
 
           noticias.forEach(n => {
@@ -49,7 +73,6 @@ export class MenuBarComponent implements OnInit {
             mapa.get(chave)!.total++;
           });
 
-          // Ordena por total
           const ordenadas = Array.from(mapa.values())
             .sort((a, b) => b.total - a.total);
 
@@ -60,6 +83,11 @@ export class MenuBarComponent implements OnInit {
       });
   }
 
+  sair() {
+    this.auth.logout();
+    this.usuarioLogado = null;
+    this.router.navigate(['/login']);
+  }
 
   alternarMenu() {
     this.menuAberto = !this.menuAberto;
