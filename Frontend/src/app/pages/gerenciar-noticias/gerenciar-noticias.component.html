@@ -1,0 +1,52 @@
+<header>
+  <app-menu-bar></app-menu-bar>
+</header>
+
+<div class="gerenciar-container">
+  <h2>Gerenciar Notícias</h2>
+
+  <!-- Campo para digitar ID -->
+  <div class="form-conteiner">
+    <label for="idBusca">Digite o ID da notícia:</label>
+    <input id="idBusca" type="number" [(ngModel)]="idBusca" />
+    <button (click)="buscarPorId()">Buscar</button>
+  </div>
+
+  <!-- Mensagem -->
+  <div *ngIf="mensagem" class="sucesso">{{ mensagem }}</div>
+
+  <!-- Formulário de edição -->
+  <div *ngIf="noticiaSelecionada" class="form-conteiner">
+    <h3>Editar Notícia</h3>
+    <form [formGroup]="noticiaForm" (ngSubmit)="salvar()">
+      <label>Título:</label>
+      <input type="text" formControlName="titulo" />
+
+      <label>Texto:</label>
+      <textarea formControlName="texto"></textarea>
+
+      <label>Imagem URL:</label>
+      <input type="text" formControlName="imagemUrl" />
+
+      <label>Categoria:</label>
+      <input type="text" formControlName="categoria" />
+
+      <label>Subcategoria:</label>
+      <input type="text" formControlName="subcategoria" />
+
+      <label>Data Publicação:</label>
+      <input type="date" formControlName="dataPublicacao" />
+
+      <label>Autor:</label>
+      <input type="text" formControlName="autor" />
+
+      <div class="action-buttons">
+        <button type="submit" class="edit-btn">Salvar Alterações</button>
+        <button type="button" class="delete-btn" (click)="remover()">Remover</button>
+      </div>
+    </form>
+  </div>
+</div>
+<footer>
+    <app-rodape></app-rodape>
+</footer>

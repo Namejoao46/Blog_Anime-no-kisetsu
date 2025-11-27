@@ -26,6 +26,14 @@ export class NoticiaService {
   buscarPorId(id: number): Observable<Noticia> {
     return this.http.get<Noticia>(`${this.apiUrl}/${id}`);
   }
+
+  atualizarNoticia(id: number, noticia: Noticia): Observable<Noticia> {
+    return this.http.put<Noticia>(`${this.apiUrl}/${id}`, noticia);
+  }
+
+  removerNoticia(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  }
 }
 
 export type { Noticia };

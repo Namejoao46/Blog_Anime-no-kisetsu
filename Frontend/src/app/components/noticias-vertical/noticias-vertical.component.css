@@ -29,10 +29,18 @@ h1, a, p{
     flex: 1;
     overflow: hidden;
 }
-.news_text h1{
+
+.news_text h1 {
     margin-bottom: 5px;
     flex-grow: 1;
+    display: -webkit-box;           /* Necessário para o line-clamp */
+    -webkit-line-clamp: 4;          /* Limite de linhas */
+    -webkit-box-orient: vertical;   /* Orientação vertical */
+    line-clamp: 4;
+    overflow: hidden;               /* Esconde o excesso */
+    text-overflow: ellipsis;        /* Adiciona "..." */
 }
+
 .news h1 {
     margin: 0;
     color: white;
